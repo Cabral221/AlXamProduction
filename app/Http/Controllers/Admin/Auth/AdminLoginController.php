@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\Artist\Auth;
+namespace App\Http\Controllers\Admin\Auth;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
-use Illuminate\Validation\ValidationException;
 
-class ArtistLoginController extends Controller
+class AdminLoginController extends Controller
 {
     /*
     |--------------------------------------------------------------------------
@@ -28,7 +28,7 @@ class ArtistLoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/artist/home';
+    protected $redirectTo = '/admin';
 
     /**
      * Create a new controller instance.
@@ -40,9 +40,13 @@ class ArtistLoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
+    public function showLoginForm()
+    {
+        return view('admin.auth.login');
+    }
+    
     public function login(Request $request)
     {
-        
         $this->validateLogin($request);
 
         if (method_exists($this, 'hasTooManyLoginAttempts') &&
@@ -56,20 +60,16 @@ class ArtistLoginController extends Controller
             return $this->sendLoginResponse($request);
         }
 
+        // If the login attempt was unsuccessful we will increment the number of attempts
+        // to login and redirect the user back to the login form. Of course, when this
+        // user surpasses their maximum number of attempts they will get locked out.
         $this->incrementLoginAttempts($request);
 
         return $this->sendFailedLoginResponse($request);
     }
 
-    protected function sendFailedLoginResponse(Request $request)
-    {
-        throw ValidationException::withMessages([
-            $this->username().'-artist' => [trans('auth.failed')],
-        ]);
-    }
-
     protected function guard()
     {
-        return Auth::guard('artist');
+        return Auth::guard('admin');
     }
 }

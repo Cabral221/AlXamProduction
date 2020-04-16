@@ -2,8 +2,9 @@
 
 namespace App\Exceptions;
 
-use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Throwable;
+use Illuminate\Support\Arr;
+use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 
 class Handler extends ExceptionHandler
 {
@@ -50,6 +51,23 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Throwable $exception)
     {
+        $class = get_class($exception);
+        // dd($exception->guards());
+        switch($class) {
+            case 'Illuminate\Auth\AuthenticationException':
+                $guard = Arr::get($exception->guards(), 0);
+                // dd($guard);
+                switch ($guard) {
+                    case 'admin':
+                        $login = 'admin.login';
+                        break;
+                    default:
+                        $login = 'user.login';
+                break;
+            }
+            
+            return redirect()->route($login);
+        }
         return parent::render($request, $exception);
     }
 }

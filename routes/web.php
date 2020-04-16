@@ -32,9 +32,16 @@ Route::name('user.')->group(function () {
 
 });
 
-Route::name('admin')->group(function () {
+Route::name('admin.')->prefix('/admin')->group(function () {
     // Autrhentification des Admins
+    Route::get('/login', 'Admin\Auth\AdminLoginController@showLoginForm')->name('login');
+    Route::post('/login', 'Admin\Auth\AdminLoginController@login')->name('login');
+    Route::post('/logout', 'Admin\Auth\AdminLoginController@logout')->name('logout');
 
+
+    Route::middleware('auth:admin')->group(function() {
+        Route::get('/', 'Admin\AdminController@index')->name('index');
+    });
 });
 
 Route::get('/sons', function () {
