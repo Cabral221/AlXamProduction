@@ -20,9 +20,7 @@
     </main>
 
     @include('layouts.footer')
-    <script src="{{ asset('user/node_modules/jquery/dist/jquery.js') }}"></script>
-    <script src="{{ asset('user/node_modules/@popperjs/core/dist/umd/popper.js') }}"></script>
-    <script src="{{ asset('user/bootstrap4/js/bootstrap.js') }}"></script>
+    <script src="{{ asset('js/app.js') }}"></script>
     @yield('script')
 </body>
 </html>

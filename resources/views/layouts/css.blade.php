@@ -4,5 +4,6 @@
 <link href="{{ asset('user/css/fontawesome5/css/solid.css') }}" rel="stylesheet">
 
 <!-- Styles -->
-<link rel="stylesheet" href="{{ asset('user/bootstrap4/css/bootstrap.css') }}">
+{{-- <link rel="stylesheet" href="{{ asset('user/bootstrap4/css/bootstrap.css') }}"> --}}
+<link rel="stylesheet" href="{{ asset('css/app.css') }}">
 <link rel="stylesheet" href="{{ asset('user/css/style.css') }}">

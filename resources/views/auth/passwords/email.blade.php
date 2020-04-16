@@ -1,6 +1,11 @@
 @extends('layouts.app')
 
-@section('content')
+@section('container')
+<div class="jumbotron">
+    <div class="container">
+        <h1 class="pl-5">Email</h1>
+    </div>
+</div>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">

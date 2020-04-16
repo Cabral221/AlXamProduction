@@ -34,10 +34,10 @@
                 <div class="menu-artist">
                     <ul class="">
                         <li class="active">
-                            <a href="{{route('artist')}}" class="">Sons <span class="small float-right">(120)</span></a>
+                            <a href="{{route('artist.index')}}" class="">Sons <span class="small float-right">(120)</span></a>
                         </li>
                         <li class=""><a href="#" class="">Playlist</a></li>
-                        <li class=""><a href="{{ route('user-opp') }}" class="">Opportinuités</a></li>
+                        <li class=""><a href="{{ route('artist.opportinuite') }}" class="">Opportinuités</a></li>
                         <li class=""><a href="#" class="">Fans</a></li>
                     </ul>
                 </div>

@@ -12,17 +12,15 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{route('collection')}}">Collection</a>
                     </li>
-
                     <li class="nav-item">
                         <a class="nav-link" href="{{route('projet')}}">Projet</a>
                     </li>
-
                     <li class="nav-item">
-                        <a class="nav-link" href="{{route('challenge')}}">opportinuités</a>
+                        <a class="nav-link" href="{{route('opportinuite')}}">opportinuités</a>
                     </li>
                 </ul>
-                <a href="{{route('artist')}}" class="btn btn-white btn-outline-danger my-2 my-sm-0 mr-2">Se connecter</a>
-                <a href="#" class="btn btn-outline-danger my-2 my-sm-0 mr-2">S'inscrire</a>
+                <a href="{{route('login')}}" class="btn btn-outline-light my-2 my-sm-0 mr-2">Se connecter</a>
+                <a href="#" class="btn btn-danger my-2 my-sm-0 mr-2">S'inscrire</a>
             </div>
         </div>
     </nav>

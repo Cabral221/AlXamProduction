@@ -22,7 +22,7 @@
     <link rel="stylesheet" href="{{asset('user/css/styleNav.css')}}">
 </head>
 <body>
-
+    
     <header>
         <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
             <div class="container">
@@ -44,93 +44,46 @@
                         </li>
                         
                         <li class="nav-item">
-                            <a class="nav-link" href="{{route('challenge')}}">Challenge</a>
+                            <a class="nav-link" href="{{route('opportinuite')}}">opportinuite</a>
                         </li>
                     </ul>
-                    <div class="dropdown mr-2">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <i class="fas fa-bell"></i>
+                    
+                    
+                    
+                    <div class="dropdown nav-button bg-transparent notifications-button hidden-sm-down">
+                        
+                        <a class="btn dropdown-toggle" href="#" id="notifications-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i id="notificationsIcon" class="fas fa-bell" aria-hidden="true"></i>
+                            <span id="notificationsBadge" class="badge badge-danger"><i class="fa fa-spinner fa-pulse fa-fw" aria-hidden="true"></i></span>
                         </a>
-                        <div class="dropdown-menu">
-                            <div class="dropdown-item">
-                                <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-                                    <div class="toast-header">
-                                      <img src="https://i.picsum.photos/id/1014/10/10.jpg" class="rounded mr-2" alt="...">
-                                      <strong class="mr-auto">Bootstrap</strong>
-                                      <small>11 mins ago</small>
-                                      <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                      </button>
-                                    </div>
-                                    <div class="toast-body">
-                                      Hello, world! This is a toast message.
-                                    </div>
-                                </div>
-                            </div>
-                            <a href="#" class="dropdown-item">
-                                <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-                                    <div class="toast-header">
-                                        <img src="https://i.picsum.photos/id/1014/10/10.jpg" class="rounded mr-2" alt="...">
-                                        <strong class="mr-auto">Bootstrap</strong>
-                                        <small class="text-muted">2 seconds ago</small>
-                                        <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <div class="toast-body">
-                                        Heads up, toasts will stack automatically
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-
-
-
-
-
-
-
-
-                    <div class="dropdown nav-button notifications-button hidden-sm-down">
-
-                        <a class="btn btn-secondary dropdown-toggle" href="#" id="notifications-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          <i id="notificationsIcon" class="fas fa-bell" aria-hidden="true"></i>
-                          <span id="notificationsBadge" class="badge badge-danger"><i class="fa fa-spinner fa-pulse fa-fw" aria-hidden="true"></i></span>
-                        </a>
-                  
+                        
                         <!-- NOTIFICATIONS -->
                         <div class="dropdown-menu notification-dropdown-menu" aria-labelledby="notifications-dropdown">
-                          <h6 class="dropdown-header">Notifications</h6>
-                  
-                          <!-- CHARGEMENT -->
-                          <a id="notificationsLoader" class="dropdown-item dropdown-notification" href="#">
-                            <p class="notification-solo text-center"><i id="notificationsIcon" class="fa fa-spinner fa-pulse fa-fw" aria-hidden="true"></i> Chargement des dernières notifications...</p>
-                          </a>
-                  
-                          <div id="notificationsContainer" class="notifications-container"></div>
-                  
-                          <!-- AUCUNE NOTIFICATION -->
-                          <a id="notificationAucune" class="dropdown-item dropdown-notification" href="#">
-                            <p class="notification-solo text-center">Aucune nouvelle notification</p>
-                          </a>
-                  
-                          <!-- TOUTES -->
-                          <a class="dropdown-item dropdown-notification-all" href="#">
-                            Voir toutes les notifications
-                          </a>
-                  
+                            <h6 class="dropdown-header">Notifications</h6>
+                            
+                            <!-- CHARGEMENT -->
+                            <a id="notificationsLoader" class="dropdown-item dropdown-notification" href="#">
+                                <p class="notification-solo text-center"><i id="notificationsIcon" class="fa fa-spinner fa-pulse fa-fw" aria-hidden="true"></i> Chargement des dernières notifications...</p>
+                            </a>
+                            
+                            <div id="notificationsContainer" class="notifications-container"></div>
+                            
+                            <!-- AUCUNE NOTIFICATION -->
+                            <a id="notificationAucune" class="dropdown-item dropdown-notification" href="#">
+                                <p class="notification-solo text-center">Aucune nouvelle notification</p>
+                            </a>
+                            
+                            <!-- TOUTES -->
+                            <a class="dropdown-item dropdown-notification-all" href="#">
+                                Voir toutes les notifications
+                            </a>
+                            
                         </div>
-                  
-                      </div>
-
-
-
-
-
-
-
-
+                        
+                    </div>
+                
+                    
+                    
                     <div class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <img src="https://i.picsum.photos/id/1014/35/35.jpg" alt="" srcset="">
@@ -146,27 +99,27 @@
             </div>
         </nav>
     </header>
-
+    
     @yield('container')
-
+    
     @include('layouts.footer')
-    <script src="{{ asset('js/app.js') }}"></script>
-    <script src="{{asset('user/js/appNotification.js')}}"></script>
     <script id="notificationTemplate" type="text/html">
         <!-- NOTIFICATION -->
         <a class="dropdown-item dropdown-notification" href="#">
-          <div class="notification-read">
-            <i class="fa fa-times" aria-hidden="true"></i>
-          </div>
-          <img class="notification-img" src="https://placehold.it/48x48" alt="Icone Notification" />
-          <div class="notifications-body">
-            <p class="notification-texte">Un nouvel incident dans votre groupe </p>
-            <p class="notification-date text-muted">
-              <i class="fa fa-clock-o" aria-hidden="true"></i> Mercredi 10 Mai, à 8h00
-            </p>
-          </div>
+            <div class="notification-read">
+                <i class="fa fa-times" aria-hidden="true"></i>
+            </div>
+            <img class="notification-img" src="https://placehold.it/48x48" alt="Icone Notification" />
+            <div class="notifications-body">
+                <p class="notification-texte">Un nouvel incident dans votre groupe </p>
+                <p class="notification-date text-muted">
+                    <i class="fa fa-clock-o" aria-hidden="true"></i> Mercredi 10 Mai, à 8h00
+                </p>
+            </div>
         </a>
     </script>
     
+    <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{asset('user/js/appNotification.js')}}"></script>
 </body>
 </html>

@@ -24,7 +24,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="{{route('challenge')}}">opportinuités</a>
+                        <a class="nav-link" href="{{route('opportinuite')}}">opportinuités</a>
                     </li>
                 </ul>
             </div>

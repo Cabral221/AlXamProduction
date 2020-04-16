@@ -1,6 +1,9 @@
 @extends('layouts.app')
 
-@section('content')
+@section('container')
+<div class="jumbotron">
+    <h1 class="pl-5">S'inscrire</h1>
+</div>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
