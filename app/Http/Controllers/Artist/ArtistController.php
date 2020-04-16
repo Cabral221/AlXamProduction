@@ -7,6 +7,10 @@ use App\Http\Controllers\Controller;
 
 class ArtistController extends Controller
 {
+
+    public function __construct() {
+        $this->middleware('auth:artist');
+    }
     /**
      * Display a listing of the resource.
      *

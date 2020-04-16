@@ -16,16 +16,26 @@ Route::get('/opportinuites', 'HomeController@opportinuite')->name('opportinuite'
 
 
 Route::name('artist.')->group(function () {
-    Route::get('/artist', 'Artist\ArtistController@index')->name('index');
-    Route::get('/artist/opportinuites', 'Artist\ArtistController@opportinuites')->name('opportinuite');
+    // Autrhentification des utilisteurs
+    Route::post('/login/artist', 'Artist\Auth\ArtistLoginController@login')->name('login');
+    Route::post('/register/artist', 'Artist\Auth\ArtistRegisterController@register')->name('register');
+    
+    Route::middleware('auth:artist')->group(function() {
+        Route::get('/artist/home', 'Artist\ArtistController@index')->name('index');
+        Route::get('/artist/opportinuites', 'Artist\ArtistController@opportinuites')->name('opportinuite');
+    });
 });
 
-Route::name('user')->group(function () {
+Route::name('user.')->group(function () {
+    // Autrhentification des utilisteurs
+    Auth::routes();
+
 });
 
 Route::name('admin')->group(function () {
-});
+    // Autrhentification des Admins
 
+});
 
 Route::get('/sons', function () {
     $sons = ['Music' => 'http://localhost:8000/user/sons/music.mp3'];
@@ -40,4 +50,3 @@ Route::get('/sons', function () {
 
 
 
-Auth::routes();

@@ -40,6 +40,10 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+        'artist' => [
+            'driver' => 'session',
+            'provider' => 'artists',
+        ],
 
         'api' => [
             'driver' => 'token',
@@ -70,6 +74,10 @@ return [
             'driver' => 'eloquent',
             'model' => App\User::class,
         ],
+        'artists' => [
+            'driver' => 'eloquent',
+            'model' => App\Artist::class,
+        ],
 
         // 'users' => [
         //     'driver' => 'database',
@@ -95,6 +103,12 @@ return [
     'passwords' => [
         'users' => [
             'provider' => 'users',
+            'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+        'artists' => [
+            'provider' => 'artists',
             'table' => 'password_resets',
             'expire' => 60,
             'throttle' => 60,

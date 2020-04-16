@@ -1,4 +1,4 @@
-@extends('layouts.artist.app')
+@extends('layouts.app')
 @section('container')
 <main role="main">
     
