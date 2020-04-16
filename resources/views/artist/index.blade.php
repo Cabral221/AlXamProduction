@@ -11,7 +11,7 @@
                             <img src="https://picsum.photos/seed/picsum/100/100" class="avatar pull-left" alt="" srcset="">
                         </div>
                         <div class="profile-content">
-                            <h2>Abdourahmane Diop</h2>
+                            <h2>{{ Auth::user()->name }}</h2>
                             <p class="muted">musicien, Saint-Louis Sénégal</p>
                             <p><span class="badge badge-pill badge-danger">+50k followers</span></p>
                         </div>
@@ -27,7 +27,6 @@
         </div>
     </div>
 
-    
     <section class="section needed">
         <div class="row bg-dark text-white">
             <div class="container">
@@ -60,81 +59,80 @@
             <div class="row text-left">
                 <div class="col-sm-8">
                     <div class="list-son">
-                        <div class="list-son-item">
-                            <div class="son-avatar float-left">
+                        <div class="list-son-item d-flex">
+                            <div class="son-avatar d-flex align-content-center flex-wrap">
                                 <img src="https://picsum.photos/seed/picsum/50/50" class="avatar float-left" alt="" srcset="">
                             </div>
-                            <div class="son-title float-left">
-                                <p>Taylor Gang</p>
+                            <div class="">
+                                <div class="son-title">
+                                    <p>Taylor Gang</p>
+                                </div>
+                                <audio controls>
+                                    <source src="http://localhost:8000/user/sons/music.mp3" type="audio/mpeg">
+                                    Your browser does not support the audio element.
+                                </audio>
                             </div>
-                            <audio controls>
-                                <source src="http://localhost:8000/user/sons/music.mp3" type="audio/mpeg">
-                                Your browser does not support the audio element.
-                            </audio>
-                            <div class="son-time pull-right text-right mr-4">
+                            <div class="son-time d-flex align-content-center flex-wrap ml-auto mr-2">
                                 <span class="mr-2 ml-2"><a href="#"><i class="fas fa-heart"></a></i></span>
                                 <span class="mr-2 ml-2"><a href="#"><i class="fas fa-share-square"></i></a></span>
                                 <span class="mr-2 ml-2"><a href="#"><i class="fas fa-comments"></i></a></span>
                             </div>
                         </div>
-                        <div class="list-son-item">
-                            <div class="son-avatar float-left">
+                        <div class="list-son-item d-flex">
+                            <div class="son-avatar d-flex align-content-center flex-wrap">
                                 <img src="https://picsum.photos/seed/picsum/50/50" class="avatar float-left" alt="" srcset="">
                             </div>
-                            <div class="son-icon-play float-left"><a href="#"><i class="fas fa-play"></i></a></div>
-                            <div class="son-title float-left">
-                                <p>Taylor Gang</p>
+                            <div class="">
+                                <div class="son-title">
+                                    <p>Taylor Gang</p>
+                                </div>
+                                <audio controls>
+                                    <source src="http://localhost:8000/user/sons/music.mp3" type="audio/mpeg">
+                                    Your browser does not support the audio element.
+                                </audio>
                             </div>
-                            <div class="son-time pull-right text-right mr-4">
+                            <div class="son-time d-flex align-content-center flex-wrap ml-auto mr-2">
                                 <span class="mr-2 ml-2"><a href="#"><i class="fas fa-heart"></a></i></span>
                                 <span class="mr-2 ml-2"><a href="#"><i class="fas fa-share-square"></i></a></span>
                                 <span class="mr-2 ml-2"><a href="#"><i class="fas fa-comments"></i></a></span>
-                                <span>4:22</span>
                             </div>
                         </div>
-                        <div class="list-son-item">
-                            <div class="son-avatar float-left">
+                        <div class="list-son-item d-flex">
+                            <div class="son-avatar d-flex align-content-center flex-wrap">
                                 <img src="https://picsum.photos/seed/picsum/50/50" class="avatar float-left" alt="" srcset="">
                             </div>
-                            <div class="son-icon-play float-left"><a href="#"><i class="fas fa-play"></i></a></div>
-                            <div class="son-title float-left">
-                                <p>Taylor Gang</p>
+                            <div class="">
+                                <div class="son-title">
+                                    <p>Taylor Gang</p>
+                                </div>
+                                <audio controls>
+                                    <source src="http://localhost:8000/user/sons/music.mp3" type="audio/mpeg">
+                                    Your browser does not support the audio element.
+                                </audio>
                             </div>
-                            <div class="son-time pull-right text-right mr-4">
+                            <div class="son-time d-flex align-content-center flex-wrap ml-auto mr-2">
                                 <span class="mr-2 ml-2"><a href="#"><i class="fas fa-heart"></a></i></span>
                                 <span class="mr-2 ml-2"><a href="#"><i class="fas fa-share-square"></i></a></span>
                                 <span class="mr-2 ml-2"><a href="#"><i class="fas fa-comments"></i></a></span>
-                                <span>4:22</span>
                             </div>
                         </div>
-                        <div class="list-son-item">
-                            <div class="son-avatar float-left">
+                        <div class="list-son-item d-flex">
+                            <div class="son-avatar d-flex align-content-center flex-wrap">
                                 <img src="https://picsum.photos/seed/picsum/50/50" class="avatar float-left" alt="" srcset="">
                             </div>
-                            <div class="son-icon-play float-left"><a href="#"><i class="fas fa-play"></i></a></div>
-                            <div class="son-title float-left">
-                                <p>Taylor Gang</p>
+                            <div class="">
+                                <div class="son-title">
+                                    <p>Taylor Gang</p>
+                                </div>
+                                <audio controls>
+                                    <source src="http://localhost:8000/user/sons/music.mp3" type="audio/mpeg">
+                                    Your browser does not support the audio element.
+                                </audio>
                             </div>
-                            <div class="son-time pull-right text-right mr-4">
+                            <div class="son-time d-flex align-content-center flex-wrap ml-auto mr-2">
                                 <span class="mr-2 ml-2"><a href="#"><i class="fas fa-heart"></a></i></span>
                                 <span class="mr-2 ml-2"><a href="#"><i class="fas fa-share-square"></i></a></span>
                                 <span class="mr-2 ml-2"><a href="#"><i class="fas fa-comments"></i></a></span>
-                                <span>4:22</span>
-                            </div>
-                        </div>
-                        <div class="list-son-item">
-                            <div class="son-avatar float-left">
-                                <img src="https://picsum.photos/seed/picsum/50/50" class="avatar float-left" alt="" srcset="">
-                            </div>
-                            <div class="son-icon-play float-left"><a href="#"><i class="fas fa-play"></i></a></div>
-                            <div class="son-title float-left">
-                                <p>Taylor Gang</p>
-                            </div>
-                            <div class="son-time pull-right text-right mr-4">
-                                <span class="mr-2 ml-2"><a href="#"><i class="fas fa-heart"></a></i></span>
-                                <span class="mr-2 ml-2"><a href="#"><i class="fas fa-share-square"></i></a></span>
-                                <span class="mr-2 ml-2"><a href="#"><i class="fas fa-comments"></i></a></span>
-                                <span>4:22</span>
                             </div>
                         </div>
                         <div class="text-center div-pagination">

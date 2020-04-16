@@ -1,3 +1,3 @@
 # Al Xam pRODUCTION
 
-Premiére plateform musicale du Sénégal
+Premiére plateform musicale du Sénégal.
