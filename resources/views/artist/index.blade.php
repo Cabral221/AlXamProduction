@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('style')
-    <link rel="stylesheet" href="https://cdn.plyr.io/3.5.10/plyr.css" />
+    <link rel="stylesheet" href="{{ asset('user/css/plyr.css') }}" />
 @endsection
 @section('container')
 <main role="main">
@@ -87,7 +87,7 @@
                                 <div class="son-title">
                                     <p>Taylor Gang</p>
                                 </div>
-                                <audio id="player" controls>
+                                <audio class="js-player" controls>
                                     <source src="http://localhost:8000/user/sons/music.mp3" type="audio/mpeg">
                                     Your browser does not support the audio element.
                                 </audio>
@@ -236,9 +236,8 @@
 </main>
 @endsection
 @section('script')
-<script src="https://cdn.plyr.io/3.5.10/plyr.js"></script>
-<script src="path/to/plyr.js"></script>
+<script src="{{ asset('user/js/plyr.js') }}"></script>
 <script>
-    const player = new Plyr('#player');
+    const player = new Plyr.setup('.js-player');
 </script>
 @endsection
