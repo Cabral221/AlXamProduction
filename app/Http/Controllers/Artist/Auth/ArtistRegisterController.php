@@ -42,7 +42,7 @@ class ArtistRegisterController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest');
+        $this->middleware('guest:artist');
     }
 
     /**
@@ -57,6 +57,7 @@ class ArtistRegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:artists'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'type_artist_id' => ['required', 'integer'],
         ]);
     }
 
@@ -72,6 +73,7 @@ class ArtistRegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'type_artist_id' => $data['type_artist_id'],
         ]);
     }
 
