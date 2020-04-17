@@ -2,9 +2,10 @@
 
 namespace App;
 
+use App\TypeArtist;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
 
 class Artist extends Authenticatable
 {
@@ -36,4 +37,8 @@ class Artist extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function typeArtist() {
+        return $this->belongsTo(TypeArtist::class);
+    }
 }

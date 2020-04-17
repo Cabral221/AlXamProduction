@@ -1,4 +1,7 @@
 @extends('layouts.app')
+@section('style')
+    <link rel="stylesheet" href="https://cdn.plyr.io/3.5.10/plyr.css" />
+@endsection
 @section('container')
 <main role="main">
     
@@ -12,13 +15,13 @@
                         </div>
                         <div class="profile-content">
                             <h2>{{ Auth::user()->name }}</h2>
-                            <p class="muted">musicien, Saint-Louis Sénégal</p>
+                            <p class="muted">{{ Auth::user()->typeArtist->libele }}, Saint-Louis Sénégal</p>
                             <p><span class="badge badge-pill badge-danger">+50k followers</span></p>
                         </div>
                     </div>
                 </div>
                 <div class="col-sm-4 text-right">
-                    <h3>Genre:</h3>
+                    <h3>Genre</h3>
                     <a href="#" class="btn btn-sm btn-danger">Hip Hop</a>
                     <a href="#" class="btn btn-sm btn-danger">RNB</a>
                     <a href="#" class="btn btn-sm btn-danger">Gospel</a>
@@ -28,7 +31,6 @@
     </div>
 
     <section class="section needed">
-        <div class="row bg-dark text-white">
             <div class="container">
                 <div class="menu-artist">
                     <ul class="">
@@ -41,7 +43,6 @@
                     </ul>
                 </div>
             </div>
-        </div>
     </section>
     
     <section class="section">
@@ -86,7 +87,7 @@
                                 <div class="son-title">
                                     <p>Taylor Gang</p>
                                 </div>
-                                <audio controls>
+                                <audio id="player" controls>
                                     <source src="http://localhost:8000/user/sons/music.mp3" type="audio/mpeg">
                                     Your browser does not support the audio element.
                                 </audio>
@@ -234,4 +235,10 @@
     </section>
 </main>
 @endsection
-    
+@section('script')
+<script src="https://cdn.plyr.io/3.5.10/plyr.js"></script>
+<script src="path/to/plyr.js"></script>
+<script>
+    const player = new Plyr('#player');
+</script>
+@endsection
