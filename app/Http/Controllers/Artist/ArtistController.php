@@ -18,7 +18,8 @@ class ArtistController extends Controller
      */
     public function index()
     {
-        return view('artist.index');
+        $songs = auth()->user()->songs;
+        return view('artist.index', compact('songs'));
     }
 
     

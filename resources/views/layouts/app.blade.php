@@ -17,6 +17,7 @@
     <main role="main">
         @yield('header')
         @yield('container')
+        @include('layouts.modals')
     </main>
 
     @include('layouts.footer')

@@ -20,9 +20,14 @@ Route::name('artist.')->group(function () {
     Route::post('/login/artist', 'Artist\Auth\ArtistLoginController@login')->name('login');
     Route::post('/register/artist', 'Artist\Auth\ArtistRegisterController@register')->name('register');
     
-    Route::middleware('auth:artist')->group(function() {
-        Route::get('/artist/home', 'Artist\ArtistController@index')->name('index');
-        Route::get('/artist/opportinuites', 'Artist\ArtistController@opportinuites')->name('opportinuite');
+    Route::middleware('auth:artist')->prefix('/artist')->group(function() {
+        // Artist Dashboard
+        Route::get('/home', 'Artist\ArtistController@index')->name('index');
+        Route::get('/opportinuites', 'Artist\ArtistController@opportinuites')->name('opportinuite');
+
+        // Ajout de son
+        Route::post('/song/add', 'Artist\SongController@store')->name('addSong');
+        Route::delete('/song/delete/{song}', 'Artist\SongController@delete')->name('deleteSong');
     });
 });
 

@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Models\Artist\Song;
 use App\TypeArtist;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -40,5 +41,9 @@ class Artist extends Authenticatable
 
     public function typeArtist() {
         return $this->belongsTo(TypeArtist::class);
+    }
+
+    public function songs() {
+        return $this->hasMany(Song::class);
     }
 }

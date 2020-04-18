@@ -55,7 +55,7 @@
             </div>
         </div>
         <div class="row footer-end">
-            <div class="col-6">© Copyright 2020 | <a href="#">Al Xam Production</a></div>
+            <div class="col-6">© Copyright {{ Carbon\Carbon::now()->year }} | <a href="#">Al Xam Production</a></div>
             <div class="col-6 text-right">Design by Pro Graph</div>
         </div>
     </div>
