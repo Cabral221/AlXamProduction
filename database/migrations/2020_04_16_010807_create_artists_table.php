@@ -21,6 +21,7 @@ class CreateArtistsTable extends Migration
             $table->string('password');
 
             $table->integer('type_artist_id');
+            $table->string('slug')->unique();
 
             $table->rememberToken();
             $table->timestamps();

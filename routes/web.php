@@ -19,6 +19,8 @@ Route::name('artist.')->group(function () {
     // Autrhentification des utilisteurs
     Route::post('/login/artist', 'Artist\Auth\ArtistLoginController@login')->name('login');
     Route::post('/register/artist', 'Artist\Auth\ArtistRegisterController@register')->name('register');
+
+    Route::get('/artists/{artist:slug}', 'Artist\ArtistController@profile')->name('profile');
     
     Route::middleware('auth:artist')->prefix('/artist')->group(function() {
         // Artist Dashboard

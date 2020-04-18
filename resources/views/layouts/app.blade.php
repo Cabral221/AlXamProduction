@@ -22,6 +22,7 @@
 
     @include('layouts.footer')
     <script src="{{ asset('js/app.js') }}"></script>
+    @include('flashy::message')
     @yield('script')
 </body>
 </html>

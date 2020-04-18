@@ -2,8 +2,9 @@
 
 namespace App;
 
-use App\Models\Artist\Song;
 use App\TypeArtist;
+use App\Models\Artist\Song;
+use Illuminate\Support\Str;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -38,6 +39,17 @@ class Artist extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    protected static function booted() {
+        static::creating( function($artist) {
+            $artist->slug = Str::slug($artist->name);
+        });
+    }
+    
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
 
     public function typeArtist() {
         return $this->belongsTo(TypeArtist::class);

@@ -15,7 +15,7 @@ class CreateTypeArtistsTable extends Migration
     {
         Schema::create('type_artists', function (Blueprint $table) {
             $table->id();
-            $table->string('libele');
+            $table->string('libele')->unique();
             $table->timestamps();
         });
     }
