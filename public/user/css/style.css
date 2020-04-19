@@ -231,13 +231,15 @@ a:hover{
 }
 .menu-artist ul{
   display: flex;
-  justify-content: space-between;
+  flex-wrap: wrap;
+  /* justify-content: space-between; */
   max-width: 1140px;
   margin-bottom: 0;
 }
 .menu-artist ul li{
   list-style: none;
-  width: 25%;
+  min-width: 250px;
+  min-width: 150px;
   text-align: left;
   margin: 1rem;
   padding: 1rem;
@@ -305,12 +307,18 @@ a:hover{
 .paginatioon{
   justify-content: center;
 }
-.pagination > li > a
+.pagination li  a,
+.pagination li  span
 {
     background-color: white;
     color: #ed2f30;
 }
-
+.page-item.active .page-link {
+  z-index: 3;
+  color: #eee;
+  background-color:  #ed2f30;
+  border-color: #ddd;
+}
 .pagination > li > a:focus,
 .pagination > li > a:hover,
 .pagination > li > span:focus,

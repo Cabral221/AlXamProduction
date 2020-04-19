@@ -19,8 +19,55 @@
                         <a class="nav-link" href="{{route('opportinuite')}}">opportinuités</a>
                     </li>
                 </ul>
-
-                @auth
+                @if(Auth::guard('artist')->check())
+                    <div class="dropdown nav-button bg-transparent notifications-button hidden-sm-down">
+                                
+                        <a class="btn dropdown-toggle" href="#" id="notifications-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i id="notificationsIcon" class="fas fa-bell" aria-hidden="true"></i>
+                            <span id="notificationsBadge" class="badge badge-danger"><i class="fa fa-spinner fa-pulse fa-fw" aria-hidden="true"></i></span>
+                        </a>
+                        
+                        <!-- NOTIFICATIONS -->
+                        <div class="dropdown-menu notification-dropdown-menu" aria-labelledby="notifications-dropdown">
+                            <h6 class="dropdown-header">Notifications</h6>
+                            
+                            <!-- CHARGEMENT -->
+                            <a id="notificationsLoader" class="dropdown-item dropdown-notification" href="#">
+                                <p class="notification-solo text-center"><i id="notificationsIcon" class="fa fa-spinner fa-pulse fa-fw" aria-hidden="true"></i> Chargement des dernières notifications...</p>
+                            </a>
+                            
+                            <div id="notificationsContainer" class="notifications-container"></div>
+                            
+                            <!-- AUCUNE NOTIFICATION -->
+                            <a id="notificationAucune" class="dropdown-item dropdown-notification" href="#">
+                                <p class="notification-solo text-center">Aucune nouvelle notification</p>
+                            </a>
+                            
+                            <!-- TOUTES -->
+                            <a class="dropdown-item dropdown-notification-all" href="#">
+                                Voir toutes les notifications
+                            </a>
+                            
+                        </div>
+                        
+                    </div>
+                    
+                    <div class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <img src="https://i.picsum.photos/id/1014/35/35.jpg" alt="" srcset="">
+                            {{ Auth::guard('artist')->user()->name }}
+                        </a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#">Artist</a>
+                            <a class="dropdown-item" href="#">Compte</a>
+                            <a class="dropdown-item" href="#">Ventes</a>
+                            <a class="dropdown-item" href="#" onclick="event.preventDefault();document.getElementById('logout').submit()">Deconnecter</a>
+                            <form id="logout" action="{{ route('user.logout') }}" method="post" class="d-none">
+                                @csrf
+                            </form>
+                        </div>
+                    </div>
+                @elseif(Auth::guard('web')->check())
                 
                     <div class="dropdown nav-button bg-transparent notifications-button hidden-sm-down">
                             
@@ -60,6 +107,7 @@
                             {{ Auth::user()->name }}
                         </a>
                         <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#">user</a>
                             <a class="dropdown-item" href="#">Compte</a>
                             <a class="dropdown-item" href="#">Ventes</a>
                             <a class="dropdown-item" href="#" onclick="event.preventDefault();document.getElementById('logout').submit()">Deconnecter</a>
@@ -68,12 +116,10 @@
                             </form>
                         </div>
                     </div>
-                @endauth
-                @guest
+                @else
                     <a href="{{route('user.login')}}" class="btn btn-outline-light my-2 my-sm-0 mr-2">Se connecter</a>
                     <a href="{{route('user.register')}}" class="btn btn-danger my-2 my-sm-0 mr-2">S'inscrire</a>
-                @endguest
-            
+                @endif
             </div>
         </div>
     </nav>

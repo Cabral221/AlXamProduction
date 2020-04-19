@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Artist;
 use App\Artist;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Fomvasss\Youtube\Facades\Youtube;
 
 class ArtistController extends Controller
 {
@@ -32,8 +33,18 @@ class ArtistController extends Controller
 
     public function profile(Artist $artist)
     {
-        dd($artist);
-        return view('artist.profile', compact('artist'));
+        // dd($artist->songs);
+        $videos = [
+            Youtube::iFrame('https://www.youtube.com/watch?v=tEnCoocmPQM', [
+                'rel'=> 0, 'controls'=>1, 'showinfo'=>1, 'frameborder'=>0
+            ]),
+            Youtube::iFrame('https://www.youtube.com/watch?v=tEnCoocmPQM', [
+                'rel'=> 0, 'controls'=>1, 'showinfo'=>1, 'frameborder'=>0
+            ]),
+        ];
+        // dd($video);
+        $songs = $artist->songs()->paginate(5);
+        return view('artist.profile', compact('artist','songs','videos'));
     }
 
 }
