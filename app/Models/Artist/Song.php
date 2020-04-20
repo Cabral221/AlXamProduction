@@ -3,17 +3,18 @@
 namespace App\Models\Artist;
 
 use App\Artist;
+use Carbon\Carbon;
 use App\Models\Like;
 use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Model;
 
 class Song extends Model
 {
-    protected $fillable = ['audio','artist_id','title','thumbnail'];
+    protected $fillable = ['audio','artist_id','title','thumbnail','slug'];
 
     public static function booted() {
         static::creating(function ($song) {
-            $song->slug = Str::slug($song->title);
+            $song->slug = Str::slug($song->title).'-'.Carbon::now()->timestamp;
         });
     }
 
@@ -32,7 +33,7 @@ class Song extends Model
 
     /**
      * return if user authentiicate like this songs
-     *
+     * @param Artist|User $auth
      * @return boolean
      */
     public function isLikeByUserAuth($auth): bool

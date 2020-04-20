@@ -9,9 +9,11 @@ function onClickBtnLike(event) {
         spanCount.textContent = res.data.likes
 
         if(icon.classList.contains('fas')) {
-            icon.classList.replace('fas','far')
+            icon.classList.replace('fas','far');
+            icon.classList.remove('text-danger');
         }else{
-            icon.classList.replace('far','fas')
+            icon.classList.replace('far','fas');
+            icon.classList.add('text-danger');
         }
     }).catch(function(error) {
         // Gestion d'erreur

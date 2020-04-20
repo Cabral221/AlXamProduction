@@ -53,7 +53,7 @@ Route::name('admin.')->prefix('/admin')->group(function () {
 });
 
 // Liker un song
-Route::get('/songs/{song:slug}/like', 'Artist\SongController@like')->name('likeSong');
+Route::get('/songs/{song:slug}/like', 'LikeController@songLike')->name('likeSong');
 
 Route::get('/sons', function () {
     $sons = ['Music' => 'http://localhost:8000/user/sons/music.mp3'];

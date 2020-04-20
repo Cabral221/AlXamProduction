@@ -68,9 +68,9 @@
                                         <span class="">
                                             <span class="js-likes">{{ $song->likes->count() }}</span>
                                             @if (Auth::guard('web')->check() && $song->isLikeByUserAuth(Auth::guard('web')->user()))
-                                                <i class="fas fa-heart"></i>
+                                                <i class="fas fa-heart text-danger"></i>
                                             @elseif(Auth::guard('artist')->check() && $song->isLikeByUserAuth(Auth::guard('artist')->user()))
-                                                <i class="fas fa-heart"></i>
+                                                <i class="fas fa-heart text-danger"></i>
                                             @else
                                                 <i class="far fa-heart"></i>
                                             @endif
