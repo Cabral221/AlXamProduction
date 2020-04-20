@@ -30,6 +30,7 @@ Route::name('artist.')->group(function () {
         // Ajout de son
         Route::post('/song/add', 'Artist\SongController@store')->name('addSong');
         Route::delete('/song/delete/{song}', 'Artist\SongController@delete')->name('deleteSong');
+       
     });
 });
 
@@ -50,6 +51,9 @@ Route::name('admin.')->prefix('/admin')->group(function () {
         Route::get('/', 'Admin\AdminController@index')->name('index');
     });
 });
+
+// Liker un song
+Route::get('/songs/{song:slug}/like', 'Artist\SongController@like')->name('likeSong');
 
 Route::get('/sons', function () {
     $sons = ['Music' => 'http://localhost:8000/user/sons/music.mp3'];

@@ -64,9 +64,28 @@
                                     </audio>
                                 </div>
                                 <div class="son-time d-flex align-content-center flex-wrap ml-auto mr-2">
-                                    <span class="mr-2 ml-2"><a href="#"><i class="fas fa-heart"></i></a></span>
-                                    <span class="mr-2 ml-2"><a href="#"><i class="fas fa-share-square"></i></a></span>
-                                    <span class="mr-2 ml-2"><a href="#"><i class="fas fa-comments"></i></a></span>
+                                    <a href="{{ route('likeSong',$song) }}" class="mr-2 ml-2 js-like-link">
+                                        <span class="">
+                                            <span class="js-likes">{{ $song->likes->count() }}</span>
+                                            @if (Auth::guard('web')->check() && $song->isLikeByUserAuth(Auth::guard('web')->user()))
+                                                <i class="fas fa-heart"></i>
+                                            @elseif(Auth::guard('artist')->check() && $song->isLikeByUserAuth(Auth::guard('artist')->user()))
+                                                <i class="fas fa-heart"></i>
+                                            @else
+                                                <i class="far fa-heart"></i>
+                                            @endif
+                                        </span>
+                                    </a>
+                                    <a href="#" class="mr-2 ml-2">
+                                        <span class="">
+                                            <i class="fas fa-share-square"></i>
+                                        </span>
+                                    </a>
+                                    <a href="#" class="mr-2 ml-2">
+                                        <span class="">
+                                            <i class="fas fa-comments"></i>
+                                        </span>
+                                    </a>
                                 </div>
                             </div>
                         @endforeach

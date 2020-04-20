@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Artist;
 
 use Carbon\Carbon;
+use App\Models\Like;
 use App\Models\Artist\Song;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
@@ -48,13 +49,59 @@ class SongController extends Controller
         return redirect()->back();
         
     }
-    public function delete($id)
+    public function delete($ong)
     {
-        $song = Song::find($id);
-
         Storage::disk('public')->delete($song->audio);
         $song->delete();
         
         return redirect()->back();
+    }
+
+    /**
+     * Permet de liker ou unliker un son
+     *
+     * @param Song $song
+     * @return void
+     */
+    public function like(Song $song)
+    {
+        if(Auth::user() == null && Auth::guard('artist')->user() == null){
+            return response()->json(['code'=>403,'message'=>'Unauthorized'],403);
+        }
+        if(Auth::user() == null){
+            $auth = Auth::guard('artist')->user();
+        }else{
+            $auth = Auth::user();
+        }
+        $className = get_class($song);
+        // dd($auth);
+        if($song->isLikeByUserAuth($auth))
+        {
+            $like = Like::where([
+                'likerable_type' => get_class($auth),
+                'likerable_id' => $auth->id,
+                'likeable_type' => get_class($song),
+                'likeable_id' => $song->id,
+            ]);
+            $like->delete();
+            return response()->json([
+                'code' => 200,
+                'message'=>'Like Bien Supprimer',
+                'likes' => $className::find($song->id)->likes->count(),
+            ],200);
+        }
+
+        Like::create([
+            'likerable_type' => get_class($auth),
+            'likerable_id' => $auth->id,
+            'likeable_type' => get_class($song),
+            'likeable_id' => $song->id,
+        ]);
+        return response()->json([
+            'code'=>200,
+            'message'=>'Like Bien ajouter',
+            'likes' => $className::find($song->id)->likes->count(),
+        ], 200);
+    
     }
 }

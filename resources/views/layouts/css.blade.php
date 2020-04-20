@@ -2,6 +2,7 @@
 <link href="{{ asset('user/css/fontawesome5/css/fontawesome.css') }}" rel="stylesheet">
 <link href="{{ asset('user/css/fontawesome5/css/brands.css') }}" rel="stylesheet">
 <link href="{{ asset('user/css/fontawesome5/css/solid.css') }}" rel="stylesheet">
+<link href="{{ asset('user/css/fontawesome5/css/all.css') }}" rel="stylesheet">
 
 <!-- Styles -->
 <link rel="stylesheet" href="{{ asset('css/app.css') }}">
