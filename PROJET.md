@@ -12,3 +12,45 @@ L'objectif est de mettre en place une industrie musical pour les artistes puisse
 - Promouvoir son activé dans les réseaux sociaux avec (EasyShare)
 - Bénéficier des opportinuité avec nos partenaires (payant/gratuit)
 
+Fonctionnalités à développer:
+Les ( V ) indiques les taches terminés.
+Les ( X ) sont des qui sont pas encore démarrer.
+Les ( E ) sont des tâches qui sont en cours de développement.
+
+- Systeme d'authentification à 4 niveaux 
+    * Admin -- X
+    * User -- V
+    * Artist -- V
+    * Studio -- X
+
+- Systéme d'authenfication via les Réseaux sociaux
+    * Facebook 
+        ^ User -- V
+        ^ Artist -- E
+    * Instagram
+        ^ User -- X
+        ^ Artist -- X
+
+- Systéme d'avatar
+    * User -- X
+    * Artist -- X
+    * Sons -- X
+
+- CRUD des Sons par les artists
+    * Ajouter -- V
+    * Supprimer -- V
+    * Lire -- X
+
+- CRUD des videos par les artists
+    * Ajouter -- X
+    * Supprimer -- X
+    * Lire -- X
+
+- CRUD des photos par les artists
+    * Ajouter -- X
+    * Supprimer -- X
+    * Lire -- X
+
+-Systémes de LIKE/UNLIKE des sons
+    * User -- V
+    * Artist -- V
