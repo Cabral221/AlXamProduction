@@ -51,6 +51,9 @@ Les ( E ) sont des tâches qui sont en cours de développement.
     * Supprimer -- X
     * Lire -- X
 
--Systémes de LIKE/UNLIKE des sons
+- Systémes de LIKE/UNLIKE des sons
     * User -- V
     * Artist -- V
+
+- Développement d'un lecteur intégré via
+    * Son ( React ) -- X
