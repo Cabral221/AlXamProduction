@@ -57,6 +57,15 @@
                             </div>
                         </div>
 
+                        <div class="form-group row">
+                            <div class="col-md-6 offset-md-4">
+                                <a href="{{ route('user.loginFacebook','facebook') }}" class="btn btn-facebook btn-primary">
+                                    <i class="fab fa-facebook-f"></i>
+                                    Using facebook
+                                </a>
+                            </div>
+                        </div>
+
                         <div class="form-group row mb-0">
                             <div class="col-md-8 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
@@ -124,6 +133,14 @@
                                         {{ __('Remember Me') }}
                                     </label>
                                 </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-md-6 offset-md-4">
+                                <a href="{{ route('artist.loginFacebook','facebook') }}" class="btn btn-facebook btn-primary">
+                                    <i class="fab fa-facebook-f"></i>
+                                    Using facebook
+                                </a>
                             </div>
                         </div>
 

@@ -63,6 +63,14 @@
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                             </div>
                         </div>
+                        <div class="form-group row">
+                            <div class="col-md-6 offset-md-4">
+                                <a href="{{ route('user.loginFacebook','facebook') }}" class="btn btn-facebook btn-primary">
+                                    <i class="fab fa-facebook-f"></i>
+                                    Using facebook
+                                </a>
+                            </div>
+                        </div>
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
@@ -152,6 +160,14 @@
                                   @enderror
                                 </div>
                         </div>
+                        <div class="form-group row">
+                            <div class="col-md-6 offset-md-4">
+                                <a href="{{ route('artist.loginFacebook','facebook') }}" class="btn btn-facebook btn-primary">
+                                    <i class="fab fa-facebook-f"></i>
+                                    Using facebook
+                                </a>
+                            </div>
+                        </div
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">

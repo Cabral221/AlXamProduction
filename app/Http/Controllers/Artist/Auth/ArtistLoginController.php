@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\Artist\Auth;
 
+use App\Artist;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Validation\ValidationException;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class ArtistLoginController extends Controller
 {
@@ -71,5 +72,43 @@ class ArtistLoginController extends Controller
     protected function guard()
     {
         return Auth::guard('artist');
+    }
+
+
+     /**
+     * Redirect the user to the GitHub authentication page.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function redirectToProvider($provider)
+    {
+        return Socialite::driver($provider)->redirect();
+    }
+
+    /**
+     * Obtain the user information from GitHub.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function handleProviderCallback($provider)
+    {
+        $artist = Socialite::driver($provider)->user();
+        $authUser = $this->findOrCreate($artist, $provider);
+        Auth::guard('artist')->login($authUser, true);
+        return redirect($this->redirectTo);
+    }
+
+    public function findOrCreate($artist, $provider)
+    {
+        $authUser = Artist::where('provider_id',$artist->id)->first();
+        if($authUser) {
+            return $authUser;
+        }
+        return Artist::create([
+            'name' => $artist->name,
+            'email' => $artist->email,
+            'provider' => $provider,
+            'provider_id' => $artist->id,
+        ]);
     }
 }

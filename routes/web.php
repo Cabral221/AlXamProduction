@@ -16,9 +16,12 @@ Route::get('/opportinuites', 'HomeController@opportinuite')->name('opportinuite'
 
 
 Route::name('artist.')->group(function () {
-    // Autrhentification des utilisteurs
+    // Autrhentification des artists
     Route::post('/login/artist', 'Artist\Auth\ArtistLoginController@login')->name('login');
     Route::post('/register/artist', 'Artist\Auth\ArtistRegisterController@register')->name('register');
+    // Authentication artist on facebook
+    Route::get('artist/login/{provider}', 'Artist\Auth\ArtistLoginController@redirectToProvider')->name('loginFacebook');
+    Route::get('artist/login/{provider}/callback', 'Artist\Auth\ArtistLoginController@handleProviderCallback');
 
     Route::get('/artists/{artist:slug}', 'Artist\ArtistController@profile')->name('profile');
     
@@ -37,6 +40,9 @@ Route::name('artist.')->group(function () {
 Route::name('user.')->group(function () {
     // Autrhentification des utilisteurs
     Auth::routes();
+
+    Route::get('login/{provider}', 'Auth\LoginController@redirectToProvider')->name('loginFacebook');
+    Route::get('login/{provider}/callback', 'Auth\LoginController@handleProviderCallback');
 
 });
 
