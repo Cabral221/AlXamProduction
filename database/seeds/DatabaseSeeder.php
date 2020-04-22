@@ -18,7 +18,7 @@ class DatabaseSeeder extends Seeder
     {
         // $this->call(UsersTableSeeder::class);
         TypeArtist::create([
-            'libele' => 'Musicien'
+            'libele' => 'Alternative'
         ]);
         
         User::create([

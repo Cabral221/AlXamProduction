@@ -19,10 +19,12 @@ Route::name('artist.')->group(function () {
     // Autrhentification des artists
     Route::post('/login/artist', 'Artist\Auth\ArtistLoginController@login')->name('login');
     Route::post('/register/artist', 'Artist\Auth\ArtistRegisterController@register')->name('register');
+    Route::post('artist/logout', 'Artist\Auth\ArtistLoginController@logout')->name('logout');
     // Authentication artist on facebook
     Route::get('artist/login/{provider}', 'Artist\Auth\ArtistLoginController@redirectToProvider')->name('loginFacebook');
     Route::get('artist/login/{provider}/callback', 'Artist\Auth\ArtistLoginController@handleProviderCallback');
 
+    // Vue du profile de l'artiste
     Route::get('/artists/{artist:slug}', 'Artist\ArtistController@profile')->name('profile');
     
     Route::middleware('auth:artist')->prefix('/artist')->group(function() {

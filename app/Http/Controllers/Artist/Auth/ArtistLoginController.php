@@ -6,6 +6,7 @@ use App\Artist;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
@@ -43,7 +44,6 @@ class ArtistLoginController extends Controller
 
     public function login(Request $request)
     {
-        
         $this->validateLogin($request);
 
         if (method_exists($this, 'hasTooManyLoginAttempts') &&
@@ -82,7 +82,8 @@ class ArtistLoginController extends Controller
      */
     public function redirectToProvider($provider)
     {
-        return Socialite::driver($provider)->redirect();
+        $redirectUrl = 'http://localhost:8000/artist/login/facebook/callback';
+        return Socialite::driver($provider)->redirectUrl($redirectUrl)->redirect();
     }
 
     /**
@@ -92,8 +93,12 @@ class ArtistLoginController extends Controller
      */
     public function handleProviderCallback($provider)
     {
-        $artist = Socialite::driver($provider)->user();
+        $redirectUrl = 'http://localhost:8000/artist/login/facebook/callback';
+        $artist = Socialite::driver($provider)->redirectUrl($redirectUrl)->user();
+        // dd($artist);
         $authUser = $this->findOrCreate($artist, $provider);
+        // dd($authUser);
+
         Auth::guard('artist')->login($authUser, true);
         return redirect($this->redirectTo);
     }
@@ -109,6 +114,7 @@ class ArtistLoginController extends Controller
             'email' => $artist->email,
             'provider' => $provider,
             'provider_id' => $artist->id,
+            'type_artist_id' => 1,
         ]);
     }
 }

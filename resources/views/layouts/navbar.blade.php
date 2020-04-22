@@ -62,7 +62,7 @@
                             <a class="dropdown-item" href="#">Compte</a>
                             <a class="dropdown-item" href="#">Ventes</a>
                             <a class="dropdown-item" href="#" onclick="event.preventDefault();document.getElementById('logout').submit()">Deconnecter</a>
-                            <form id="logout" action="{{ route('user.logout') }}" method="post" class="d-none">
+                            <form id="logout" action="{{ route('artist.logout') }}" method="post" class="d-none">
                                 @csrf
                             </form>
                         </div>
