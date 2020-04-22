@@ -206,7 +206,5 @@
 
 @section('script')
 <script src="{{ asset('user/js/plyr.js') }}"></script>
-<script>
-    const player = new Plyr.setup('.js-player');
-</script>
+<script src="{{ asset('user/js/SetupPlyr.js') }}"></script>
 @endsection
