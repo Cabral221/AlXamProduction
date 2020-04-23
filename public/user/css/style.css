@@ -14,7 +14,7 @@ body {
   padding-top: 3rem;
   /* padding-bottom: 3rem; */
   color: #5a5a5a;
-  font-size: 16px;
+  font-size: 14px;
 }
 a{
   text-decoration: none;
@@ -341,6 +341,43 @@ a:hover{
     background-color: #ed2f30 !Important;
     border: solid 1px #ed2f30;
 }
+/* Partage des son reseaux sociaux */
+#social-links ul{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+/* #social-links li { */
+  /* float: left; */
+/* } */
+.btn-facebook{
+  background-color: #3b5998;
+  color: white;
+  font-size: 0.8rem;
+  margin-bottom: 1rem;
+  border: 1px solid transparent;
+}
+.btn-twitter{
+  background-color: #00acee;
+  color: white;
+  font-size: 0.8rem;
+  margin-bottom: 1rem;
+  border: 1px solid transparent;
+}
+.btn-whatsapp{
+  background-color: #25D366;
+  color: white;
+  font-size: 0.8rem;
+  border: 1px solid transparent;
+  margin-bottom: 1rem;
+}
+.btn-facebook:hover,
+.btn-twitter:hover,
+.btn-whatsapp:hover{
+  color: white;
+  border: 1px solid rgb(233, 186, 34);
+}
+/* Fin du Partage des son reseaux sociaux */
 
 /* RESPONSIVE CSS
 -------------------------------------------------- */
