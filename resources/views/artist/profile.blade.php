@@ -76,7 +76,7 @@
                                             @endif
                                         </span>
                                     </a>
-                                    <a href="#" class="mr-2 ml-2">
+                                    <a href="javascript.void();" onclick="event.preventDefault();" class="showShareModal mr-2 ml-2" data-url="{{ route('artist.song',[$artist,$song]) }}" data-toggle="modal" data-target="#showShareModal">
                                         <span class="">
                                             <i class="fas fa-share-square"></i>
                                         </span>

@@ -26,6 +26,8 @@ Route::name('artist.')->group(function () {
 
     // Vue du profile de l'artiste
     Route::get('/artists/{artist:slug}', 'Artist\ArtistController@profile')->name('profile');
+    // Vue d'un son de l'artiste
+    Route::get('/artists/{artist:slug}/{song:slug}', 'Artist\ArtistController@oneSong')->name('song');
     
     Route::middleware('auth:artist')->prefix('/artist')->group(function() {
         // Artist Dashboard

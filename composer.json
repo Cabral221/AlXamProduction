@@ -14,6 +14,7 @@
         "fomvasss/youtube": "^1.3",
         "fruitcake/laravel-cors": "^1.0",
         "guzzlehttp/guzzle": "^6.3",
+        "jorenvanhocht/laravel-share": "^3.2",
         "laravel/framework": "^7.0",
         "laravel/socialite": "^4.3",
         "laravel/tinker": "^2.0",

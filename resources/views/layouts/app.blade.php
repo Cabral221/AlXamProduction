@@ -17,13 +17,14 @@
     <main role="main">
         @yield('header')
         @yield('container')
-        @include('layouts.modals')
     </main>
-
+    
     @include('layouts.footer')
+    @include('layouts.modals')
     <script src="{{ asset('js/app.js') }}"></script>
     @include('flashy::message')
-    @yield('script')
     <script src="{{ asset('user/js/like.js') }}"></script>
+    <script src="{{ asset('js/share.js') }}"></script>
+    @yield('script')
 </body>
 </html>

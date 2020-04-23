@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Artist;
 
 use App\Artist;
+use App\Models\Artist\Song;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Fomvasss\Youtube\Facades\Youtube;
@@ -11,7 +12,7 @@ class ArtistController extends Controller
 {
 
     public function __construct() {
-        $this->middleware('auth:artist')->except(['profile']);
+        $this->middleware('auth:artist')->except(['profile','oneSong']);
     }
     /**
      * Display a listing of the resource.
@@ -23,8 +24,6 @@ class ArtistController extends Controller
         $songs = auth()->user()->songs;
         return view('artist.index', compact('songs'));
     }
-
-    
 
     public function opportinuite() 
     {
@@ -45,6 +44,12 @@ class ArtistController extends Controller
         // dd($video);
         $songs = $artist->songs()->paginate(5);
         return view('artist.profile', compact('artist','songs','videos'));
+    }
+
+    public function oneSong(Artist $artist, Song $song)
+    {
+        // Afficher un song de l'artist concerné
+        dd('Show one song of artist');
     }
 
 }
