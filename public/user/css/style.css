@@ -21,7 +21,7 @@ a{
   color: inherit;
 }
 a:hover{
-  color: #ed2f30;
+  color: #f28e24;
   text-decoration: none;
 }
 /* CUSTOMIZE THE GENIRIC FOR Al Xamdou
@@ -46,12 +46,25 @@ a:hover{
 .navbar-dark{
   background-color: black !important;
 }
+.text-danger{
+  color: #f28e24 !important;
+}
 .btn-danger{
-  background-color: #ed2f30;
+  background-color: #f28e24;
+}
+.btn-danger:hover{
+  background-color: transparent;
+  border-color: #f28e24;
+  color: #f28e24;
 }
 .btn-outline-danger{
-  border-color: #ed2f30;
-  color: #ed2f30;
+  border-color: #f28e24;
+  color: #f28e24;
+}
+.btn-outline-danger:hover{
+  background-color: #f28e24;
+  border-color: #f28e24;
+  color: white;
 }
 
 .btn-white{
@@ -138,12 +151,12 @@ a:hover{
 }
 .social-icon a{
   text-decoration: none;
-  color: #ed2f30;
+  color: #f28e24;
   color: white;
   /* padding-bottom: 2rem; */
 }
 .social-icon li a:hover{
-  color: #ed2f30;
+  color: #f28e24;
   /* padding-bottom: 2rem; */
 }
 .social-icon a i{
@@ -289,7 +302,7 @@ a:hover{
 .son-icon-play{
   margin-right: 2rem;
   float: left;
-  color: #ed2f30;
+  color: #f28e24;
 }
 .son-time{
   line-height: 50px;
@@ -307,12 +320,12 @@ a:hover{
 .pagination li  span
 {
     background-color: white;
-    color: #ed2f30;
+    color: #f28e24;
 }
 .page-item.active .page-link {
   z-index: 3;
   color: #eee;
-  background-color:  #ed2f30;
+  background-color:  #f28e24;
   border-color: #ddd;
 }
 .pagination > li > a:focus,
@@ -320,7 +333,7 @@ a:hover{
 .pagination > li > span:focus,
 .pagination > li > span:hover
 {
-    color: #ed2f30;
+    color: #f28e24;
     background-color: #eee;
     border-color: #ddd;
 }
@@ -328,14 +341,14 @@ a:hover{
 .pagination > .active > a
 {
     color: white;
-    background-color: #ed2f30 !Important;
-    border: solid 1px #ed2f30 !Important;
+    background-color: #f28e24 !Important;
+    border: solid 1px #f28e24 !Important;
 }
 
 .pagination > .active > a:hover
 {
-    background-color: #ed2f30 !Important;
-    border: solid 1px #ed2f30;
+    background-color: #f28e24 !Important;
+    border: solid 1px #f28e24;
 }
 /* Partage des son reseaux sociaux */
 #social-links ul{
