@@ -76,7 +76,14 @@
                                             @endif
                                         </span>
                                     </a>
-                                    <a href="javascript.void();" onclick="event.preventDefault();" class="showShareModal mr-2 ml-2" data-url="{{ route('artist.song',[$artist,$song]) }}" data-toggle="modal" data-target="#showShareModal">
+                                    <a href="#" onclick="event.preventDefault();" class="showShareModal mr-2 ml-2" 
+                                        data-url="{{ route('artist.song',[$artist,$song]) }}" 
+                                        data-title="{{ $song->title }}"
+                                        data-thumbnail="https://picsum.photos/seed/picsum/100/100"
+                                        data-artist="{{ $artist->name }}"
+                                        data-toggle="modal" 
+                                        data-target="#showShareModal"
+                                    >
                                         <span class="">
                                             <i class="fas fa-share-square"></i>
                                         </span>

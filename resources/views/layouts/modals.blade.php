@@ -42,6 +42,16 @@
         </button>
         </div>
         <div class="modal-body">
+            <div class="row share-info bg-dark text-white pt-3 pb-3 mr-1 ml-1">
+                <div class="col-sm-3">
+                    <img src="" alt="" width="100%" class="song-thumbnail">
+                </div>
+                <div class="col-sm-9">
+                    <h4 class="header share-info_artist_name"></h4>
+                    <h6 class="content share-info_song_name"></h6>
+                </div>
+            </div>
+            <hr>
             {!! Share::page('', 'Share title')->facebook()->twitter()->whatsapp() !!}
         </div>
         <div class="modal-footer">

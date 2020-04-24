@@ -286,10 +286,6 @@ a:hover{
 .son-title span{
   text-align: right;
 }
-.son-title p,
-.son-icon-play{
-  /* line-height: 50px; */
-}
 .son-icon-play{
   margin-right: 2rem;
   float: left;
@@ -347,9 +343,6 @@ a:hover{
   padding: 0;
   margin: 0;
 }
-/* #social-links li { */
-  /* float: left; */
-/* } */
 .btn-facebook{
   background-color: #3b5998;
   color: white;

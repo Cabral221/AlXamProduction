@@ -23,15 +23,19 @@ $('.showShareModal').each(function () {
     $('#showShareModal').on('show.bs.modal', function (event) {
         var button = $(event.relatedTarget) // Button that triggered the modal
         var url = button.data('url')
-        
-        
+        var artist = button.data('artist')
+        var songTitle = button.data('title')
+        var thumbnail = button.data('thumbnail')
+
+
         $(this).find('#social-links ul li').each(function () {
             var socialUrl = $(this).find('a.social-button').attr('href')
-            $(this).find('a.social-button').attr('href',socialUrl+url)
-
-            // Utiliser axios pour recuper la chanson 
-            // Afficher les donnees comme avatar, titre, artiste
-            // ***
-        });
+            $(this).find('a.social-button').attr('href',socialUrl+url)            
+        })
+        
+        // Afficher les donnees comme avatar, titre, artiste
+        $('.share-info').find('.share-info_artist_name').text(artist)
+        $('.share-info').find('.share-info_song_name').text(songTitle)
+        $('.share-info').find('.song-thumbnail').attr('src', thumbnail)
     });
 });
