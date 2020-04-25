@@ -74,6 +74,14 @@ a:hover{
   border-color: white;
   color: white;
 }
+.badge-danger {
+  color: #fff;
+  background-color: #f28e24;
+}
+.img-thumbnail{
+  background-color: #f28e24;
+  border: 1px solid #f28e24 !important;
+}
 /* Services */
 .section{
   position: relative;
@@ -256,11 +264,11 @@ a:hover{
   text-align: left;
   margin: 1rem;
   padding: 1rem;
-  background-color: rgba(216, 4, 4, 0.7);
+  background-color: #f28e24;
 }
 .menu-artist ul li.active,
 .menu-artist ul li:hover{
-  background-color: rgba(216, 4, 4, 0.61);
+  background-color: #f28e24;
   border: 1px solid white;
 }
 .menu-artist ul li a{
@@ -308,7 +316,22 @@ a:hover{
   line-height: 50px;
 }
 /* End Profile Artist */
-
+/* Started Song Show of artist */
+.jumbo-song .artist-name{
+  font-size: 4rem;
+  font-weight: 200;
+}
+.jumbo-song .song-title {
+  font-size: 2rem;
+  font-weight: 200;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+}
+.jumbo-song .player-auto {
+  margin-top: 2rem !important;
+  margin-bottom: 0;
+}
+/* end Song Show of artist */
 /* Pazgination style */
 .div-pagination{
   display: flex;
@@ -337,14 +360,12 @@ a:hover{
     background-color: #eee;
     border-color: #ddd;
 }
-
 .pagination > .active > a
 {
     color: white;
     background-color: #f28e24 !Important;
     border: solid 1px #f28e24 !Important;
 }
-
 .pagination > .active > a:hover
 {
     background-color: #f28e24 !Important;

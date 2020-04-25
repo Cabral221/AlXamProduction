@@ -3,6 +3,7 @@
 namespace App;
 
 use App\Models\Like;
+use App\Models\Follower;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -40,5 +41,9 @@ class User extends Authenticatable
 
     public function likers(){
         return $this->morphMany(Like::class,'likerable');
+    }
+
+    public function follows(){
+        return $this->morphMany(Follower::class,'followable');
     }
 }

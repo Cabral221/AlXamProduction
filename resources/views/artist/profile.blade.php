@@ -16,7 +16,21 @@
                         <div class="profile-content">
                             <h2>{{ $artist->name }}</h2>
                             <p class="muted">{{ $artist->typeArtist->libele }}, Saint-Louis Sénégal</p>
-                            <p><span class="badge badge-pill badge-danger">+50k followers</span></p>
+                            <p>
+                                <a href="{{ route('artist.follow',$artist) }}" class="btn btn-sm btn-outline-danger" id="follow-btn">
+                                    <span class="badge badge-pill badge-danger follower-count">{{ $artist->followers->count() }}</span>
+                                    @if (Auth::guard('web')->check() && $artist->isFollowBy(Auth::guard('web')->user()))
+                                        <span class="follower-word">Se désabonner</span> 
+                                        <i class="fas fa-bell text-danger"></i>
+                                    @elseif(Auth::guard('artist')->check() && $artist->isFollowBy(Auth::guard('artist')->user()))
+                                        <span class="follower-word">Se désabonner</span> 
+                                        <i class="fas fa-bell text-danger"></i>
+                                    @else
+                                        <span class="follower-word">S'abonner</span> 
+                                        <i class="far fa-bell"></i>
+                                    @endif
+                                </a>
+                            </p>
                         </div>
                     </div>
                 </div>

@@ -28,6 +28,9 @@ Route::name('artist.')->group(function () {
     Route::get('/artists/{artist:slug}', 'Artist\ArtistController@profile')->name('profile');
     // Vue d'un son de l'artiste
     Route::get('/artists/{artist:slug}/{song:slug}', 'Artist\ArtistController@oneSong')->name('song');
+
+    // Follower un artist
+    Route::post('/artist/{artist:slug}/follow', 'Artist\ArtistController@follow')->name('follow');
     
     Route::middleware('auth:artist')->prefix('/artist')->group(function() {
         // Artist Dashboard

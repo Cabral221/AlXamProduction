@@ -41,11 +41,6 @@ class LikeController extends Controller
             $like->delete();
             $nblikes = $classNameMedia::find($song->id)->likes->count();
             return $this->jsonPrepare(200,'Like Bien Supprimer',$nblikes);
-            // return response()->json([
-            //     'code' => 200,
-            //     'message'=>'Like Bien Supprimer',
-            //     'likes' => $classNameMedia::find($song->id)->likes->count(),
-            // ],200);
         }
 
         // Add Like
@@ -53,11 +48,6 @@ class LikeController extends Controller
         Like::create($subLike);
         $nblikes = $classNameMedia::find($song->id)->likes->count();
         return $this->jsonPrepare(200,'Like Bien ajouter',$nblikes);
-        // return response()->json([
-        //     'code'=>200,
-        //     'message'=>'Like Bien ajouter',
-        //     'likes' => $classNameMedia::find($song->id)->likes->count(),
-        // ], 200);
     
     }
 

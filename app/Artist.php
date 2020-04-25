@@ -3,6 +3,7 @@
 namespace App;
 
 use App\TypeArtist;
+use App\Models\Follower;
 use App\Models\Artist\Song;
 use Illuminate\Support\Str;
 use Illuminate\Notifications\Notifiable;
@@ -57,5 +58,24 @@ class Artist extends Authenticatable
 
     public function songs() {
         return $this->hasMany(Song::class);
+    }
+    public function follow(){
+        return $this->morphMany(Follower::class,'followable');
+    }
+
+    public function followers()
+    {
+        return $this->hasMany(Follower::class);
+    }
+
+    public function isFollowBy($user)
+    {
+        // dd($auth);
+        foreach($this->followers as $follower) {
+            if($follower->followable == $user){
+                return true;
+            }
+        }
+        return false;
     }
 }

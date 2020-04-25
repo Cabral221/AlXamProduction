@@ -24,6 +24,7 @@
     <script src="{{ asset('js/app.js') }}"></script>
     @include('flashy::message')
     <script src="{{ asset('user/js/like.js') }}"></script>
+    <script src="{{ asset('user/js/follow.js') }}"></script>
     <script src="{{ asset('js/share.js') }}"></script>
     @yield('script')
 </body>

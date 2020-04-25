@@ -3,16 +3,18 @@
 namespace App\Http\Controllers\Artist;
 
 use App\Artist;
+use App\Models\Follower;
 use App\Models\Artist\Song;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Fomvasss\Youtube\Facades\Youtube;
 
 class ArtistController extends Controller
 {
 
     public function __construct() {
-        $this->middleware('auth:artist')->except(['profile','oneSong']);
+        $this->middleware('auth:artist')->except(['profile','oneSong','follow']);
     }
     /**
      * Display a listing of the resource.
@@ -49,7 +51,44 @@ class ArtistController extends Controller
     public function oneSong(Artist $artist, Song $song)
     {
         // Afficher un song de l'artist concerné
-        dd('Show one song of artist');
+        // dd('Show one song of artist');
+        
+        return view('artist.song', compact('artist','song'));
     }
 
+    public function follow(Artist $artist)
+    {
+        if(Auth::user() == null && Auth::guard('artist')->user() == null){
+            return response()->json(['code'=>403,'message'=>'Unauthorized'],403);
+        }
+        if(Auth::user() == null){
+            $user = Auth::guard('artist')->user();
+        }else{
+            $user = Auth::user();
+        }
+        $className = get_class($artist);
+
+        $subFollow = [
+            'followable_type' => get_class($user),
+            'followable_id' => $user->id,
+            'artist_id' => $artist->id,
+        ];
+        if($artist->isFollowBy($user)){
+            $follower = Follower::where($subFollow);
+            $follower->delete();
+            $nbfollow = $className::find($artist->id)->followers->count();
+            return $this->jsonPrepare(200,'Follower Bien Supprimer',$nbfollow);
+        }
+        Follower::create($subFollow);
+        $nbfollow = $className::find($artist->id)->followers->count();
+        return $this->jsonPrepare(200,'Follower Bien ajouter',$nbfollow);
+    }
+
+    public function jsonPrepare(Int $code, String $message,Int $followers) {
+        return response()->json([
+            'code' => $code,
+                'message' => $message,
+                'followers' => $followers,
+        ],$code);
+    }
 }

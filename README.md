@@ -1,4 +1,4 @@
-# Al Xam PRODUCTION
+# RËKEL PRODUCTION
 
 Premiére plateform musicale du Sénégal.
 Ceci permettra aux artistes d'avoir une espace accueillant toutes leurs réalisation afin de les partager, ou vendre facilement avec des fans. Parmis les artistes, ils peuvent être musicien, beat maker, danceur.
@@ -9,7 +9,7 @@ L'objectif est de mettre en place une industrie musical pour les artistes puisse
 - Base de données de musique
 - Espace vidéo clip, Making of
 - Créer un évenement
-- Promouvoir son activé dans les réseaux sociaux avec (EasyShare)
+- Promouvoir son activé dans les réseaux sociaux avec (laravel-share)
 - Bénéficier des opportinuité avec nos partenaires (payant/gratuit)
 
 Fonctionnalités à développer:
@@ -26,7 +26,7 @@ Les ( E ) sont des tâches qui sont en cours de développement.
 - Systéme d'authenfication via les Réseaux sociaux
     * Facebook 
         ^ User -- V
-        ^ Artist -- E
+        ^ Artist -- V
     * Instagram
         ^ User -- X
         ^ Artist -- X
@@ -40,6 +40,12 @@ Les ( E ) sont des tâches qui sont en cours de développement.
     * Artist -- X
     * Sons -- X
 
+- CRUD des services fournit pas Rekel
+    * Lire -- X
+    * Ajouter -- X
+    * Modifier -- X
+    * Supprimer -- X
+
 - CRUD des Sons par les artists
     * Ajouter -- V
     * Supprimer -- V
@@ -50,7 +56,7 @@ Les ( E ) sont des tâches qui sont en cours de développement.
     * Supprimer -- X
     * Lire -- X
 
-- CRUD des photos par les artists
+- CRUD des photos par les artistes
     * Ajouter -- X
     * Supprimer -- X
     * Lire -- X
@@ -61,9 +67,13 @@ Les ( E ) sont des tâches qui sont en cours de développement.
     * Modifier -- X
     * Supprimer -- X
 
-- Systémes de LIKE/UNLIKE des sons
+- Systéme de LIKE/UNLIKE des sons
     * User -- V
     * Artist -- V
+
+- Systéme de Follow/Unfollow des artistes
+    * User -- V
+    * Artists -- V
 
 - Systéme de partage des song sur lees réseaux sociaux
     * Facebook -- V
@@ -72,3 +82,9 @@ Les ( E ) sont des tâches qui sont en cours de développement.
 
 - Développement d'un lecteur intégré
     * Son ( React JS ) -- X
+
+- Ajouter un modal de connection pour les erreurs 403 unautorized
+    * Like -- X
+    * Follow -- X
+    * comment -- X
+    * opportinuite -- X
