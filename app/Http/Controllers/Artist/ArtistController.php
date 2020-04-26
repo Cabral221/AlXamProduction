@@ -23,8 +23,9 @@ class ArtistController extends Controller
      */
     public function index()
     {
-        $songs = auth()->user()->songs;
-        return view('artist.index', compact('songs'));
+        $artist = auth()->user();
+        $songs = auth()->user()->songs()->paginate(10);
+        return view('artist.index', compact('songs','artist'));
     }
 
     public function opportinuite() 
@@ -51,9 +52,9 @@ class ArtistController extends Controller
     public function oneSong(Artist $artist, Song $song)
     {
         // Afficher un song de l'artist concerné
-        // dd('Show one song of artist');
-        
-        return view('artist.song', compact('artist','song'));
+        $lastSongs = $artist->songs()->orderBy('created_at','desc')->limit(5)->get();
+        // dd($lastSongs->get());
+        return view('artist.song', compact('artist','song','lastSongs'));
     }
 
     public function follow(Artist $artist)

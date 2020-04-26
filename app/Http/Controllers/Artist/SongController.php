@@ -49,7 +49,8 @@ class SongController extends Controller
         return redirect()->back();
         
     }
-    public function delete($ong)
+
+    public function delete(Song $ong)
     {
         Storage::disk('public')->delete($song->audio);
         $song->delete();

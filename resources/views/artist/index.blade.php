@@ -14,7 +14,7 @@
                         <div class="profile-content">
                             <h2>{{ Auth::user()->name }}</h2>
                             <p class="muted">{{ Auth::user()->typeArtist->libele }}, Saint-Louis Sénégal</p>
-                            <p><span class="badge badge-pill badge-danger">+50k followers</span></p>
+                            <p><span class="badge badge-pill badge-danger">{{ $artist->followers->count() }} followers</span></p>
                         </div>
                     </div>
                 </div>
@@ -33,7 +33,7 @@
                 <div class="menu-artist">
                     <ul class="">
                         <li class="active">
-                            <a href="{{route('artist.index')}}" class="">Sons <span class="small float-right">(120)</span></a>
+                            <a href="{{route('artist.index')}}" class="">Sons <span class="small float-right">({{ $artist->songs->count() }})</span></a>
                         </li>
                         <li class=""><a href="#" class="">Playlist</a></li>
                         <li class=""><a href="{{ route('artist.opportinuite') }}" class="">Opportinuités</a></li>
@@ -77,7 +77,7 @@
                             </div>
                             <div class="son-time d-flex align-content-center flex-wrap ml-auto mr-2">
                                 <span class="mr-2 ml-2"><a href="#" onclick="event.preventDefault();document.getElementById('songDelete-{{ $song->id }}').submit();"><i class="fas fa-trash-alt"></i></a></span>
-                                <form id="songDelete-{{ $song->id }}" action="{{ route('artist.deleteSong', $song->id) }}" method="POST" class="d-none">
+                                <form id="songDelete-{{ $song->id }}" action="{{ route('artist.deleteSong', $song) }}" method="POST" class="d-none">
                                     @csrf
                                     @method('DELETE')
                                 </form>
@@ -146,13 +146,7 @@
                             </div>
                         </div>
                         <div class="text-center div-pagination">
-                            <ul class="pagination pagination-sm mx-auto">
-                                <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                            </ul>
+                            {{ $songs->links() }}
                         </div>
                     </div>
                 </div>

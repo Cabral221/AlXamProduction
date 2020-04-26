@@ -51,6 +51,7 @@ a:hover{
 }
 .btn-danger{
   background-color: #f28e24;
+  border-color: #f28e24;
 }
 .btn-danger:hover{
   background-color: transparent;
