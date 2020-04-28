@@ -54,11 +54,11 @@
                     
                     <div class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <img src="https://i.picsum.photos/id/1014/35/35.jpg" alt="" srcset="">
+                            <img src="{{ (Auth::guard('artist')->user()->avatar !== null) ? asset('storage/'.Auth::guard('artist')->user()->avatar->avatar) : asset('storage/uploads/avatar.png') }}" width="35px" alt="" srcset="">
                             {{ Auth::guard('artist')->user()->name }}
                         </a>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item" href="#">Artist</a>
+                            <a class="dropdown-item" href="{{ route('artist.index') }}">Profil</a>
                             <a class="dropdown-item" href="#">Compte</a>
                             <a class="dropdown-item" href="#">Ventes</a>
                             <a class="dropdown-item" href="#" onclick="event.preventDefault();document.getElementById('logout').submit()">Deconnecter</a>

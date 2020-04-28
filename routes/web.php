@@ -68,6 +68,9 @@ Route::name('admin.')->prefix('/admin')->group(function () {
 // Liker un song
 Route::get('/songs/{song:slug}/like', 'LikeController@songLike')->name('likeSong');
 
+// Uploads d'avatars des profil d'utilisateurs
+Route::post('/avatar', 'AvatarController@uploadAvatar')->name('avatar');
+
 Route::get('/sons', function () {
     $sons = ['Music' => 'http://localhost:8000/user/sons/music.mp3'];
     $fileContents = Storage::disk('public')->get('sons/music.mp3');

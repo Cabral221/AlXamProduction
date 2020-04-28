@@ -3,6 +3,7 @@
 namespace App;
 
 use App\Models\Like;
+use App\Models\Avatar;
 use App\Models\Follower;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -39,7 +40,13 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function likers(){
+    public function avatar()
+    {
+        return $this->morphOne(Avatar::class,'avatarable');
+    }
+
+    public function likers()
+    {
         return $this->morphMany(Like::class,'likerable');
     }
 

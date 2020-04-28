@@ -3,6 +3,7 @@
 namespace App;
 
 use App\TypeArtist;
+use App\Models\Avatar;
 use App\Models\Follower;
 use App\Models\Artist\Song;
 use Illuminate\Support\Str;
@@ -20,7 +21,7 @@ class Artist extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'type_artist_id','provider','provider_id'
+        'name', 'email', 'password', 'type_artist_id','provider','provider_id','avatar'
     ];
 
     /**
@@ -41,7 +42,8 @@ class Artist extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    protected static function booted() {
+    protected static function booted() 
+    {
         static::creating( function($artist) {
             $artist->slug = Str::slug($artist->name);
         });
@@ -54,6 +56,11 @@ class Artist extends Authenticatable
 
     public function typeArtist() {
         return $this->belongsTo(TypeArtist::class);
+    }
+
+    public function avatar()
+    {
+        return $this->morphOne(Avatar::class,'avatarable');
     }
 
     public function songs() {

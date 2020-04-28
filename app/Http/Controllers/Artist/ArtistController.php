@@ -3,12 +3,17 @@
 namespace App\Http\Controllers\Artist;
 
 use App\Artist;
+use Carbon\Carbon;
 use App\Models\Follower;
+use Illuminate\View\View;
 use App\Models\Artist\Song;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Fomvasss\Youtube\Facades\Youtube;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
 
 class ArtistController extends Controller
 {
@@ -19,9 +24,9 @@ class ArtistController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Illuminate\View\View
      */
-    public function index()
+    public function index() : View
     {
         $artist = auth()->user();
         $songs = auth()->user()->songs()->paginate(10);
@@ -49,7 +54,7 @@ class ArtistController extends Controller
         return view('artist.profile', compact('artist','songs','videos'));
     }
 
-    public function oneSong(Artist $artist, Song $song)
+    public function oneSong(Artist $artist, Song $song) : View
     {
         // Afficher un song de l'artist concerné
         $lastSongs = $artist->songs()->orderBy('created_at','desc')->limit(5)->get();

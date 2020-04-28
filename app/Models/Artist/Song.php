@@ -5,6 +5,7 @@ namespace App\Models\Artist;
 use App\Artist;
 use Carbon\Carbon;
 use App\Models\Like;
+use App\Models\Avatar;
 use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Model;
 
@@ -22,12 +23,19 @@ class Song extends Model
     {
         return 'slug';
     }
+    
+    public function avatar()
+    {
+        return $this->morphOne(Avatar::class,'avatarable');
+    }
 
-    public function artist() {
+    public function artist() 
+    {
         return $this->belongsTo(Artist::class);
     }
 
-    public function likes(){
+    public function likes()
+    {
         return $this->morphMany(Like::class,'likeable');
     }
 
