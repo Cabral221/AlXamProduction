@@ -13,7 +13,10 @@ Route::get('/', 'HomeController@index')->name('welcome');
 Route::get('/collection', 'HomeController@collection')->name('collection');
 Route::get('/projets', 'HomeController@projet')->name('projet');
 Route::get('/opportinuites', 'HomeController@opportinuite')->name('opportinuite');
-
+// Liker un song
+Route::get('/songs/{song:slug}/like', 'LikeController@songLike')->name('likeSong');
+// Uploads d'avatars des profil d'utilisateurs
+Route::post('/avatar', 'AvatarController@uploadAvatar')->name('avatar');
 
 Route::name('artist.')->group(function () {
     // Autrhentification des artists
@@ -62,14 +65,12 @@ Route::name('admin.')->prefix('/admin')->group(function () {
 
     Route::middleware('auth:admin')->group(function() {
         Route::get('/', 'Admin\AdminController@index')->name('index');
+        // Routes for sevices CRUD
+        Route::get('/services', 'Admin\ServicesController@index')->name('services');
+        Route::post('/services/store', 'Admin\ServicesController@store')->name('services.store');
     });
 });
 
-// Liker un song
-Route::get('/songs/{song:slug}/like', 'LikeController@songLike')->name('likeSong');
-
-// Uploads d'avatars des profil d'utilisateurs
-Route::post('/avatar', 'AvatarController@uploadAvatar')->name('avatar');
 
 Route::get('/sons', function () {
     $sons = ['Music' => 'http://localhost:8000/user/sons/music.mp3'];

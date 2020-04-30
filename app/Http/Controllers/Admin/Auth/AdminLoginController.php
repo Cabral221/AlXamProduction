@@ -37,14 +37,14 @@ class AdminLoginController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest')->except('logout');
+        $this->middleware('guest:admin')->except('logout');
     }
 
     public function showLoginForm()
     {
         return view('admin.auth.login');
     }
-    
+
     public function login(Request $request)
     {
         $this->validateLogin($request);
