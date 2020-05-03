@@ -66,8 +66,12 @@ Route::name('admin.')->prefix('/admin')->group(function () {
     Route::middleware('auth:admin')->group(function() {
         Route::get('/', 'Admin\AdminController@index')->name('index');
         // Routes for sevices CRUD
-        Route::get('/services', 'Admin\ServicesController@index')->name('services');
+        Route::get('/services', 'Admin\ServicesController@index')->name('services.index');
+        Route::get('/services/create', 'Admin\ServicesController@create')->name('services.create');
         Route::post('/services/store', 'Admin\ServicesController@store')->name('services.store');
+        Route::get('/services/{service:slug}/edit', 'Admin\ServicesController@edit')->name('services.edit');
+        Route::put('/services/{service:slug}', 'Admin\ServicesController@update')->name('services.update');
+        Route::delete('/services/{service:slug}/delete', 'Admin\ServicesController@delete')->name('services.delete');
     });
 });
 

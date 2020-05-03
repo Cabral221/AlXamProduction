@@ -19,6 +19,9 @@
       @include('layouts.admin.navbar')
       <div class="content">
           <div class="container-fluid">
+            <div class="alert alert-success">
+              <p>Alert test</p>
+            </div>
             @yield('container')
           </div>
       </div>

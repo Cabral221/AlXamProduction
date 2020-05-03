@@ -7,46 +7,11 @@
         <p class="card-category">Created using Roboto Font Family</p>
     </div>
     <div class="card-body">
-        <h3>Creation de Services</h3>
+        <h3>Gestion des Services</h3>
+        <a href="{{ route('admin.services.create') }}" class="btn btn-outline-info btn-lg">Ajouter un service</a>
+        <hr>
         <div class="row">
-            <div class="col-md-4">
-                <form action="{{ route('admin.services.store') }}" method="post" class="form" enctype="multipart/form-data">
-                    @csrf
-                    <div class="fileinput fileinput-new text-center" data-provides="fileinput">
-                        <div class="fileinput-new thumbnail img-circle">
-                          <img src="{{ asset('admin_asset/assets/img/placeholder.jpg')}}" alt="...">
-                        </div>
-                        <div class="fileinput-preview fileinput-exists thumbnail img-circle"></div>
-                        <div>
-                          <span class="btn btn-round btn-warning btn-file">
-                            <span class="fileinput-new">Ajouter un icon</span>
-                            <span class="fileinput-exists">Changer</span>
-                            <input type="file" name="icon">
-                          </span>
-                          <br>
-                          <a href="#pablo" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput"><i class="fa fa-times"></i> Supprimer</a>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="title">Nom du service</label>
-                        <input type="text" id="title" name="title" class="form-control">
-                    </div>
-                    <div class="form-grouo">
-                        <label for="describe">Description du services</label>
-                        <textarea name="describe" id="describe" cols="30" rows="7" class="form-control"></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="price">Prix de service en FCFA</label>
-                        <input type="number" id="price" name="price" class="form-control" >
-                    </div>
-
-
-                    <div class="form-group">
-                        <button type="submit" class="btn btn-info btn-block">Enregistrer</button>
-                    </div>
-                </form>
-            </div>
-            <div class="col-md-8">
+            <div class="col-md-10 ml-auto mr-auto">
                 <div class="card">
                     <div class="card-header card-header-warning card-header-icon">
                         <div class="card-icon">
@@ -111,8 +76,16 @@
                                                         <td>{{ $service->title }}</td>
                                                         <td>{{ $service->created_at }}</td>
                                                         <td class="text-right">
-                                                            <a href="#" class="btn btn-link btn-warning btn-just-icon edit"><i class="material-icons">edit</i></a>
-                                                            <a href="#" class="btn btn-link btn-danger btn-just-icon remove"><i class="material-icons">close</i></a>
+                                                            <a href="{{ route('admin.services.edit',$service) }}" class="btn btn-link btn-warning btn-just-icon edit">
+                                                                <i class="material-icons">edit</i>
+                                                            </a>
+                                                            <a href="#" onclick="event.preventDefault();document.getElementById('services-form-delete-{{ $service->id }}').submit();" class="btn btn-link btn-danger btn-just-icon remove">
+                                                                <i class="material-icons">delete</i>
+                                                            </a>
+                                                            <form id="services-form-delete-{{ $service->id }}" action="{{ route('admin.services.delete', $service) }}" method="post" class="d-none">
+                                                                @csrf
+                                                                @method('DELETE')
+                                                            </form>
                                                         </td>
                                                     </tr>
                                                 @endforeach

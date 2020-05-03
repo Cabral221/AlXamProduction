@@ -18,7 +18,7 @@ Les ( X ) sont des qui sont pas encore démarrer.
 Les ( E ) sont des tâches qui sont en cours de développement.
 
 - Systeme d'authentification à 4 niveaux 
-    * Admin -- X
+    * Admin -- V
     * User -- V
     * Artist -- V
     * Studio -- X
@@ -32,17 +32,17 @@ Les ( E ) sont des tâches qui sont en cours de développement.
         ^ Artist -- X
 
 - Integration d'un template d'administration
-    * Template -- X
-    * Integration -- X
+    * Template -- V
+    * Integration -- V
 
 - Systéme d'avatar
     * User -- X
-    * Artist -- X
+    * Artist -- V
     * Sons -- X
 
 - CRUD des services fournit pas Rekel
     * Lire -- X
-    * Ajouter -- X
+    * Ajouter -- V
     * Modifier -- X
     * Supprimer -- X
 
@@ -88,3 +88,10 @@ Les ( E ) sont des tâches qui sont en cours de développement.
     * Follow -- X
     * comment -- X
     * opportinuite -- X
+
+- Ajouter une base de données de newsLetter
+    * Ajouter
+    * Supprimer
+
+- Responsive Design
+    * Cotés utilisateur

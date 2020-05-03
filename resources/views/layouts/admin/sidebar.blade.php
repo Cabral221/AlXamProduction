@@ -7,7 +7,7 @@
     <div class="sidebar-wrapper">
         <ul class="nav">
         <li class="nav-item active ">
-            <a class="nav-link" href="{{ route('admin.services') }}">
+            <a class="nav-link" href="{{ route('admin.services.index') }}">
             <i class="material-icons">dashboard</i>
             <p>Services</p>
             </a>
