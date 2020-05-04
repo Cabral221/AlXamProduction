@@ -39,3 +39,33 @@ $('.showShareModal').each(function () {
         $('.share-info').find('.song-thumbnail').attr('src', thumbnail)
     });
 });
+
+$('#form-add-song').submit(function(event) {
+    event.preventDefault();
+    var url = $(this).attr('action')
+    var data  = new FormData(this);
+    // console.log(data.v;
+    var config = {
+        onUploadProgress: function (e) {
+            var percent = Math.round((e.loaded * 100) / e.total);
+            $('#progress__song')
+                        .attr('aria-valuenow',percent)
+                        .css('width',percent + '%')
+                        .css('height','30px')
+                        .text(percent + '%')
+                        .parent().removeClass('d-none').addClass('mb-5');
+
+            $('#form-add-song').addClass('d-none')
+        }
+    }
+
+    window.axios.post(url,data,config)
+    .then( function(response) {
+        console.log(response.data)
+        window.location.reload(true);
+        // Actualiser la page  
+    })
+    .catch( function (error) {
+        console.log(error)
+    })
+})

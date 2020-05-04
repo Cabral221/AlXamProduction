@@ -42,7 +42,7 @@ Route::name('artist.')->group(function () {
 
         // Ajout de son
         Route::post('/song/add', 'Artist\SongController@store')->name('addSong');
-        Route::delete('/song/delete/{song}', 'Artist\SongController@delete')->name('deleteSong');
+        Route::delete('/songs/{song:slug}/delete', 'Artist\SongController@delete')->name('deleteSong');
        
     });
 });

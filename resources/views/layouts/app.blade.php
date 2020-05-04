@@ -20,7 +20,10 @@
     </main>
     
     @include('layouts.footer')
-    @include('layouts.modals')
+
+    @yield('modals')
+    @include('layouts.artist.modals.shareMedia')
+    
     <script src="{{ asset('js/app.js') }}"></script>
     @include('flashy::message')
     <script src="{{ asset('user/js/like.js') }}"></script>

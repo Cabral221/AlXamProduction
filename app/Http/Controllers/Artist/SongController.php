@@ -50,7 +50,7 @@ class SongController extends Controller
         
     }
 
-    public function delete(Song $ong)
+    public function delete(Song $song)
     {
         Storage::disk('public')->delete($song->audio);
         $song->delete();

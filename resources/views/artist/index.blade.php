@@ -229,6 +229,11 @@
     </section>
 
 @endsection
+
+@section('modals')
+    @include('layouts.artist.modals.addSong')
+@endsection
+
 @section('script')
 <script src="{{ asset('user/js/plyr.js') }}"></script>
 <script>

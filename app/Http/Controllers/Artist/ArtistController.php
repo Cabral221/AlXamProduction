@@ -29,7 +29,7 @@ class ArtistController extends Controller
     public function index() : View
     {
         $artist = auth()->user();
-        $songs = auth()->user()->songs()->paginate(10);
+        $songs = auth()->user()->songs()->orderBy('created_at', 'desc')->paginate(10);
         return view('artist.index', compact('songs','artist'));
     }
 

@@ -425,6 +425,14 @@ a:hover{
 }
 /* Fin du Partage des son reseaux sociaux */
 
+/* Styliser le progresse bar */
+.progress{
+  height: 30px !important;
+  left: 50px !important;
+  right: 50px !important;
+}
+/* Fin Stylisation le progresse bar */
+
 /* RESPONSIVE CSS
 -------------------------------------------------- */
 
