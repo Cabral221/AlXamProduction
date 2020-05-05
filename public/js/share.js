@@ -17,8 +17,9 @@ $(document).on('click', '.social-button', function (e) {
         e.preventDefault();
     }
 
-});
+})
 
+// Share song
 $('.showShareModal').each(function () {
     $('#showShareModal').on('show.bs.modal', function (event) {
         var button = $(event.relatedTarget) // Button that triggered the modal
@@ -38,8 +39,9 @@ $('.showShareModal').each(function () {
         $('.share-info').find('.share-info_song_name').text(songTitle)
         $('.share-info').find('.song-thumbnail').attr('src', thumbnail)
     });
-});
+})
 
+// Artist Add song
 $('#form-add-song').submit(function(event) {
     event.preventDefault();
     var url = $(this).attr('action')
@@ -68,4 +70,14 @@ $('#form-add-song').submit(function(event) {
     .catch( function (error) {
         console.log(error)
     })
+})
+
+// Login Manager
+$('#loginArtist').on('click', function () {
+    $('#loginModal').modal('hide');
+    $('#loginArtistModal').modal('show');
+})
+$('#loginUser').on('click', function () {
+    $('#loginModal').modal('hide');
+    $('#loginUserModal').modal('show');
 })

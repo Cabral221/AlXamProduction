@@ -1,6 +1,6 @@
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
         <div class="container">
-            <a class="navbar-brand" href="{{route('welcome')}}"> <img src="{{ asset('user/img/logo.png') }}" class="mr-3" width="40px" height="40px" alt="" srcset="">RËKEL</a>
+            <a class="navbar-brand" href="{{route('welcome')}}"> <img src="{{ asset('images/logo.png') }}" class="mr-3" width="40px" height="40px" alt="" srcset="">RËKEL</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
             </button>
@@ -117,7 +117,10 @@
                         </div>
                     </div>
                 @else
-                    <a href="{{route('user.login')}}" class="btn btn-outline-light my-2 my-sm-0 mr-2">Se connecter</a>
+                    {{-- <a href="{{route('user.login')}}" class="btn btn-outline-light my-2 my-sm-0 mr-2">Se connecter</a> --}}
+                    <button type="button" class="btn btn-sm btn-outline-light my-2 my-sm-0 mr-2" data-toggle="modal" data-target="#loginModal">
+                        Se connecter
+                    </button>
                     <a href="{{route('user.register')}}" class="btn btn-danger my-2 my-sm-0 mr-2">S'inscrire</a>
                 @endif
             </div>

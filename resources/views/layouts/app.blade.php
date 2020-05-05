@@ -22,7 +22,8 @@
     @include('layouts.footer')
 
     @yield('modals')
-    @include('layouts.artist.modals.shareMedia')
+    @include('modals.shareMedia')
+    @include('modals.loginModal')
     
     <script src="{{ asset('js/app.js') }}"></script>
     @include('flashy::message')

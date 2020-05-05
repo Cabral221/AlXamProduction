@@ -54,7 +54,7 @@ class ArtistRegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
+            'name' => ['required', 'string', 'max:255', 'unique:artists'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:artists'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'type_artist_id' => ['required', 'integer'],

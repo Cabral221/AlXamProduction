@@ -59,7 +59,7 @@
                     <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#addSongModal">
                         Ajouter un son
                     </button>
-                    <a href="#" class="btn btn-danger">Ajouter un album</a>
+                    <a href="#" class="btn btn-danger">Créer un album</a>
                 </div>
             </div>
             <div class="row text-left">
@@ -90,65 +90,7 @@
                                 <span class="mr-2 ml-2"><a href="#"><i class="fas fa-comments"></i></a></span>
                             </div>
                         </div>
-                            
                         @endforeach
-                        <div class="list-son-item d-flex">
-                            <div class="son-avatar d-flex align-content-center flex-wrap">
-                                <img src="https://picsum.photos/seed/picsum/50/50" class="avatar float-left" alt="" srcset="">
-                            </div>
-                            <div class="">
-                                <div class="son-title">
-                                    <p>Fausse Donnée</p>
-                                </div>
-                                <audio class="js-player" controls>
-                                    <source src="http://localhost:8000/user/sons/music.mp3" type="audio/mpeg">
-                                    Your browser does not support the audio element.
-                                </audio>
-                            </div>
-                            <div class="son-time d-flex align-content-center flex-wrap ml-auto mr-2">
-                                <span class="mr-2 ml-2"><a href="#"><i class="fas fa-heart"></a></i></span>
-                                <span class="mr-2 ml-2"><a href="#"><i class="fas fa-share-square"></i></a></span>
-                                <span class="mr-2 ml-2"><a href="#"><i class="fas fa-comments"></i></a></span>
-                            </div>
-                        </div>
-                        <div class="list-son-item d-flex">
-                            <div class="son-avatar d-flex align-content-center flex-wrap">
-                                <img src="https://picsum.photos/seed/picsum/50/50" class="avatar float-left" alt="" srcset="">
-                            </div>
-                            <div class="">
-                                <div class="son-title">
-                                    <p>Taylor Gang</p>
-                                </div>
-                                <audio controls>
-                                    <source src="http://localhost:8000/user/sons/music.mp3" type="audio/mpeg">
-                                    Your browser does not support the audio element.
-                                </audio>
-                            </div>
-                            <div class="son-time d-flex align-content-center flex-wrap ml-auto mr-2">
-                                <span class="mr-2 ml-2"><a href="#"><i class="fas fa-heart"></a></i></span>
-                                <span class="mr-2 ml-2"><a href="#"><i class="fas fa-share-square"></i></a></span>
-                                <span class="mr-2 ml-2"><a href="#"><i class="fas fa-comments"></i></a></span>
-                            </div>
-                        </div>
-                        <div class="list-son-item d-flex">
-                            <div class="son-avatar d-flex align-content-center flex-wrap">
-                                <img src="https://picsum.photos/seed/picsum/50/50" class="avatar float-left" alt="" srcset="">
-                            </div>
-                            <div class="">
-                                <div class="son-title">
-                                    <p>Taylor Gang</p>
-                                </div>
-                                <audio controls>
-                                    <source src="http://localhost:8000/user/sons/music.mp3" type="audio/mpeg">
-                                    Your browser does not support the audio element.
-                                </audio>
-                            </div>
-                            <div class="son-time d-flex align-content-center flex-wrap ml-auto mr-2">
-                                <span class="mr-2 ml-2"><a href="#"><i class="fas fa-heart"></a></i></span>
-                                <span class="mr-2 ml-2"><a href="#"><i class="fas fa-share-square"></i></a></span>
-                                <span class="mr-2 ml-2"><a href="#"><i class="fas fa-comments"></i></a></span>
-                            </div>
-                        </div>
                         <div class="text-center div-pagination">
                             {{ $songs->links() }}
                         </div>
@@ -231,7 +173,7 @@
 @endsection
 
 @section('modals')
-    @include('layouts.artist.modals.addSong')
+    @include('modals.addSong')
 @endsection
 
 @section('script')

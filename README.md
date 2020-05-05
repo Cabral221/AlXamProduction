@@ -38,13 +38,14 @@ Les ( E ) sont des tâches qui sont en cours de développement.
 - Systéme d'avatar
     * User -- X
     * Artist -- V
-    * Sons -- X
+    * Sons -- V
+    * Services -- V
 
-- CRUD des services fournit pas Rekel
-    * Lire -- X
+- CRUD des services fournit par Rekel
+    * Lire -- V
     * Ajouter -- V
-    * Modifier -- X
-    * Supprimer -- X
+    * Modifier -- V
+    * Supprimer -- V
 
 - CRUD des Sons par les artists
     * Ajouter -- V
@@ -95,3 +96,6 @@ Les ( E ) sont des tâches qui sont en cours de développement.
 
 - Responsive Design
     * Cotés utilisateur
+
+- Ajouter un loader d'attente lors de chargement d'un son
+    * Ajouter -- V

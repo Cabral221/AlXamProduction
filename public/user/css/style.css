@@ -399,16 +399,22 @@ a:hover{
 .btn-facebook{
   background-color: #3b5998;
   color: white;
-  font-size: 0.8rem;
+  font-size: 1rem;
   margin-bottom: 1rem;
   border: 1px solid transparent;
+}
+.btn-facebook:hover {
+    background-color: #2d4577;
 }
 .btn-twitter{
   background-color: #00acee;
   color: white;
-  font-size: 0.8rem;
+  font-size: 2rem;
   margin-bottom: 1rem;
   border: 1px solid transparent;
+}
+.btn-twitter:hover {
+    background-color: #0289be;
 }
 .btn-whatsapp{
   background-color: #25D366;

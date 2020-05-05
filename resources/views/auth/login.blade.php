@@ -95,7 +95,11 @@
                 <div class="card-body">
                     <form method="POST" action="{{ route('artist.login') }}">
                         @csrf
-
+                        <div class="form-group row">
+                            <div class="col-md-6 offset-md-4">
+                                <a href="{{ route('artist.loginFacebook','facebook') }}" class="btn btn-facebook btn-block btn-primary"><i class="fab fa-facebook-f mr-3"></i>Se connecter via facebook</a>
+                            </div>
+                        </div>
                         <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
 
@@ -133,14 +137,6 @@
                                         {{ __('Remember Me') }}
                                     </label>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-md-6 offset-md-4">
-                                <a href="{{ route('artist.loginFacebook','facebook') }}" class="btn btn-facebook btn-primary">
-                                    <i class="fab fa-facebook-f"></i>
-                                    Using facebook
-                                </a>
                             </div>
                         </div>
 

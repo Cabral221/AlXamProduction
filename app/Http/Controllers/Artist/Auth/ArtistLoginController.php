@@ -95,7 +95,7 @@ class ArtistLoginController extends Controller
     {
         $redirectUrl = 'http://localhost:8000/artist/login/facebook/callback';
         $artist = Socialite::driver($provider)->redirectUrl($redirectUrl)->user();
-        // dd($artist);
+
         $authUser = $this->findOrCreate($artist, $provider);
         // dd($authUser);
 
