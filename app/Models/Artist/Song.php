@@ -46,9 +46,8 @@ class Song extends Model
      */
     public function isLikeByUserAuth($auth): bool
     {
-        // dd($auth);
         foreach($this->likes as $like) {
-            if($like->likerable == $auth){
+            if($like->likerable->id === $auth->id){
                 return true;
             }
         }

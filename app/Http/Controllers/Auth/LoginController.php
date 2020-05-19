@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use App\Models\Avatar;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Providers\RouteServiceProvider;
@@ -60,6 +61,7 @@ class LoginController extends Controller
     {
         $user = Socialite::driver($provider)->user();
         $authUser = $this->findOrCreate($user, $provider);
+
         Auth::login($authUser, true);
         return redirect($this->redirectTo);
     }
@@ -70,11 +72,19 @@ class LoginController extends Controller
         if($authUser) {
             return $authUser;
         }
-        return User::create([
+        
+        $userCreate = User::create([
             'name' => $user->name,
             'email' => $user->email,
             'provider' => $provider,
             'provider_id' => $user->id,
         ]);
+        
+        Avatar::create([
+            'avatar' => $user->avatar,
+            'avatarable_id' => $userCreate->id,
+            'avatarable_type' => get_class($userCreate)
+        ]);
+        return $userCreate;
     }
 }

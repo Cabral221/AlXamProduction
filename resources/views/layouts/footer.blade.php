@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-3">
-                <header class="header mb-3"><img src="{{ asset('user/img/logo.png') }}" width="50px" alt="Logo" srcset=""> <span>Al Xam Production</span></header>
+                <header class="header mb-3"><img src="{{ asset('images/logo.png') }}" width="50px" alt="Logo" srcset=""> <span>RËKEL Production</span></header>
                 <p>Quis Lorem mollit id eu et velit aliqua. Excepteur ut elit aliquip cillum irure. Nostrud proident in in duis Lorem ut eiusmod aliquip laborum sint culpa magna.</p>
                 <div class="text-danger">    
                     <div><a href="#"><i class="fas fa-phone mr-2"></i>   +221773769703</a></div>
@@ -39,7 +39,6 @@
                 <a href="#" class="badge badge-pill badge-light">Rock</a>
                 <a href="#" class="badge badge-pill badge-light">Techno</a>
                 <header>Infos utiles</header>
-                
             </div>
 
             <div class="col-md-3">
@@ -55,7 +54,7 @@
             </div>
         </div>
         <div class="row footer-end">
-            <div class="col-6">© Copyright {{ Carbon\Carbon::now()->year }} | <a href="#">Al Xam Production</a></div>
+            <div class="col-6">© Copyright {{ Carbon\Carbon::now()->year }} | <a href="{{ route('admin.index') }}">RËKEL Production</a></div>
             <div class="col-6 text-right">Design by Pro Graph</div>
         </div>
     </div>

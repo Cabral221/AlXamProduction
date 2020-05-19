@@ -21,16 +21,26 @@ class ArtistController extends Controller
     public function __construct() {
         $this->middleware('auth:artist')->except(['profile','oneSong','follow']);
     }
-    /**
-     * Display a listing of the resource.
-     *
-     * @return Illuminate\View\View
-     */
+
     public function index() : View
     {
         $artist = auth()->user();
         $songs = auth()->user()->songs()->orderBy('created_at', 'desc')->paginate(10);
-        return view('artist.index', compact('songs','artist'));
+        $videos = [
+            Youtube::iFrame('https://www.youtube.com/watch?v=tEnCoocmPQM', [
+                'rel'=> 0, 'controls'=>1, 'showinfo'=>1, 'frameborder'=>0
+            ]),
+            Youtube::iFrame('https://www.youtube.com/watch?v=tEnCoocmPQM', [
+                'rel'=> 0, 'controls'=>1, 'showinfo'=>1, 'frameborder'=>0
+            ]),
+        ];
+        
+        return view('artist.index', compact('songs','artist','videos'));
+    }
+
+    public function setting ()
+    {
+        return view('artist.setting');
     }
 
     public function opportinuite() 
@@ -90,7 +100,8 @@ class ArtistController extends Controller
         return $this->jsonPrepare(200,'Follower Bien ajouter',$nbfollow);
     }
 
-    public function jsonPrepare(Int $code, String $message,Int $followers) {
+    public function jsonPrepare(Int $code, String $message,Int $followers) 
+    {
         return response()->json([
             'code' => $code,
                 'message' => $message,

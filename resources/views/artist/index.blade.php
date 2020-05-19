@@ -1,7 +1,9 @@
 @extends('layouts.app')
+
 @section('style')
     <link rel="stylesheet" href="{{ asset('user/css/plyr.css') }}" />
 @endsection
+
 @section('container')
     <div class="jumbotron">
         <div class="container">
@@ -12,7 +14,7 @@
                             <form action="{{ route('avatar') }}" method="post" enctype="multipart/form-data" class="form-autosubmit">
                                 @csrf
                                 <input type="file" name="avatar" class="form-control">
-                                <img src="{{ ($artist->avatar !== null) ? asset('storage/'.$artist->avatar->avatar) : asset('storage/uploads/avatar.png') }}" width="110px" class="avatar pull-left" alt="" srcset="">
+                                <img src="{{ ($artist->avatar !== null) ? ($artist->provider !== null ? $artist->avatar->avatar : asset('storage/'.$artist->avatar->avatar)) : asset('storage/uploads/avatar.png') }}" width="110px" class="avatar pull-left" alt="" srcset="">
                             </form>
                         </div>
                         <div class="profile-content">
@@ -80,13 +82,35 @@
                                 </audio>
                             </div>
                             <div class="son-time d-flex align-content-center flex-wrap ml-auto mr-2">
-                                <span class="mr-2 ml-2"><a href="#" onclick="event.preventDefault();document.getElementById('songDelete-{{ $song->id }}').submit();"><i class="fas fa-trash-alt"></i></a></span>
+                                <a href="#" onclick="event.preventDefault();document.getElementById('songDelete-{{ $song->id }}').submit();"><i class="fas fa-trash-alt"></i></a>
                                 <form id="songDelete-{{ $song->id }}" action="{{ route('artist.deleteSong', $song) }}" method="POST" class="d-none">
                                     @csrf
                                     @method('DELETE')
                                 </form>
-                                <span class="mr-2 ml-2"><a href="#"><i class="fas fa-heart"></i></a></span>
-                                <span class="mr-2 ml-2"><a href="#"><i class="fas fa-share-square"></i></a></span>
+                                <a href="{{ route('likeSong',$song) }}" class="mr-2 ml-2 js-like-link">
+                                    <span class="">
+                                        <span class="js-likes">{{ $song->likes->count() }}</span>
+                                        @if (Auth::guard('web')->check() && $song->isLikeByUserAuth(Auth::guard('web')->user()))
+                                            <i class="fas fa-heart text-danger"></i>
+                                        @elseif(Auth::guard('artist')->check() && $song->isLikeByUserAuth(Auth::guard('artist')->user()))
+                                            <i class="fas fa-heart text-danger"></i>
+                                        @else
+                                            <i class="far fa-heart"></i>
+                                        @endif
+                                    </span>
+                                </a>
+                                <a href="#" onclick="event.preventDefault();" class="showShareModal mr-2 ml-2" 
+                                    data-url="{{ route('artist.song',[$artist,$song]) }}" 
+                                    data-title="{{ $song->title }}"
+                                    data-thumbnail="https://picsum.photos/seed/picsum/100/100"
+                                    data-artist="{{ $artist->name }}"
+                                    data-toggle="modal" 
+                                    data-target="#showShareModal"
+                                >
+                                    <span class="">
+                                        <i class="fas fa-share-square"></i>
+                                    </span>
+                                </a>
                                 <span class="mr-2 ml-2"><a href="#"><i class="fas fa-comments"></i></a></span>
                             </div>
                         </div>

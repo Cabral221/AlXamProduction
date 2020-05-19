@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Artist\Auth;
 
 use App\Artist;
+use App\Models\Avatar;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -95,7 +96,7 @@ class ArtistLoginController extends Controller
     {
         $redirectUrl = 'http://localhost:8000/artist/login/facebook/callback';
         $artist = Socialite::driver($provider)->redirectUrl($redirectUrl)->user();
-
+        // dd($artist->avatar);
         $authUser = $this->findOrCreate($artist, $provider);
         // dd($authUser);
 
@@ -106,15 +107,23 @@ class ArtistLoginController extends Controller
     public function findOrCreate($artist, $provider)
     {
         $authUser = Artist::where('provider_id',$artist->id)->first();
+
         if($authUser) {
             return $authUser;
         }
-        return Artist::create([
+        $artistCreate = Artist::create([
             'name' => $artist->name,
             'email' => $artist->email,
             'provider' => $provider,
             'provider_id' => $artist->id,
             'type_artist_id' => 1,
         ]);
+
+        Avatar::create([
+            'avatar' => $artist->avatar,
+            'avatarable_id' => $artistCreate->id,
+            'avatarable_type' => get_class($artistCreate)
+        ]);
+        return $artistCreate;
     }
 }

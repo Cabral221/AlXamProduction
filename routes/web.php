@@ -7,8 +7,6 @@ use Illuminate\Support\Facades\Response;
 
 
 
-
-
 Route::get('/', 'HomeController@index')->name('welcome');
 Route::get('/collection', 'HomeController@collection')->name('collection');
 Route::get('/projets', 'HomeController@projet')->name('projet');
@@ -38,6 +36,7 @@ Route::name('artist.')->group(function () {
     Route::middleware('auth:artist')->prefix('/artist')->group(function() {
         // Artist Dashboard
         Route::get('/home', 'Artist\ArtistController@index')->name('index');
+        Route::get('/setting', 'Artist\ArtistController@setting')->name('setting');
         Route::get('/opportinuites', 'Artist\ArtistController@opportinuites')->name('opportinuite');
 
         // Ajout de son

@@ -5,8 +5,8 @@
 
 /* Font Face */
 @font-face{
-  font-family: "Achafsex";
-  src: url("aCharming/Achafsex.ttf");
+  font-family: "brush-script-mt";
+  src: url("brush-script-mt/brush\ script\ mt\ kursiv.ttf");
 }
 
 body {
@@ -28,7 +28,7 @@ a:hover{
 -------------------------------------------------- */
 
 .navbar-brand{
-  font-family: "Achafsex";
+  font-family: "brush-script-mt";
   font-size: 1.5rem;
 }
 .collapse .dropdown a{
@@ -42,6 +42,8 @@ a:hover{
   border-radius: 50%;
   margin-right: 1rem;
 }
+
+/* BTN OVERRIDE */
 .bg-dark, 
 .navbar-dark{
   background-color: black !important;
@@ -67,7 +69,6 @@ a:hover{
   border-color: #f28e24;
   color: white;
 }
-
 .btn-white{
   background-color: rgba(255, 255, 255, 0.685);
 }
@@ -78,6 +79,32 @@ a:hover{
 .badge-danger {
   color: #fff;
   background-color: #f28e24;
+}
+.btn-red {
+  background-color: #942244;
+  border: 1px solid #942244;
+  color: white;
+}
+.btn-red:hover {
+    background-color: white;
+    border: 1px solid #942244;
+    color: #942244;
+}
+/* BTN OVERRIDE */
+/* Card Profil Update */
+.card-red{
+  border: 2px solid #942244;
+  border-radius: 10px;
+}
+.card-red h2 {
+  color: #942244;
+}
+.card-warning {
+  border: 2px solid #f28e24;
+  border-radius: 10px;
+}
+.card-warning h4 {
+    color: #f28e24;
 }
 .img-thumbnail{
   background-color: #f28e24;

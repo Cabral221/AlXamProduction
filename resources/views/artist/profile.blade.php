@@ -20,7 +20,7 @@
                                 <a href="{{ route('artist.follow',$artist) }}" class="btn btn-sm btn-outline-danger" id="follow-btn">
                                     <span class="badge badge-pill badge-danger follower-count">{{ $artist->followers->count() }}</span>
                                     @if (Auth::guard('web')->check() && $artist->isFollowBy(Auth::guard('web')->user()))
-                                        <span class="follower-word">Se désabonner</span> 
+                                        <span class="follower-word">Se désabonner</span>
                                         <i class="fas fa-bell text-danger"></i>
                                     @elseif(Auth::guard('artist')->check() && $artist->isFollowBy(Auth::guard('artist')->user()))
                                         <span class="follower-word">Se désabonner</span> 
@@ -96,8 +96,7 @@
                                         data-thumbnail="https://picsum.photos/seed/picsum/100/100"
                                         data-artist="{{ $artist->name }}"
                                         data-toggle="modal" 
-                                        data-target="#showShareModal"
-                                    >
+                                        data-target="#showShareModal">
                                         <span class="">
                                             <i class="fas fa-share-square"></i>
                                         </span>
