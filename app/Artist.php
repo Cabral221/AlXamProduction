@@ -63,10 +63,13 @@ class Artist extends Authenticatable
         return $this->morphOne(Avatar::class,'avatarable');
     }
 
-    public function songs() {
+    public function songs()
+    {
         return $this->hasMany(Song::class);
     }
-    public function follow(){
+    
+    public function follow()
+    {
         return $this->morphMany(Follower::class,'followable');
     }
 

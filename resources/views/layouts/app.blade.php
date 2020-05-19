@@ -5,7 +5,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <title>Al Xam Production</title>
-
         <!-- Fonts -->
        @include('layouts.css')
        @yield('style')
@@ -31,6 +30,7 @@
     <script src="{{ asset('user/js/follow.js') }}"></script>
     <script src="{{ asset('user/js/autoSubmit.js') }}"></script>
     <script src="{{ asset('js/share.js') }}"></script>
+    <script src="{{ asset('js/utils.js') }}"></script>
     @yield('script')
 </body>
 </html>
