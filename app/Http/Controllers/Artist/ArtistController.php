@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Artist;
 
 use App\Artist;
 use Carbon\Carbon;
+use App\TypeArtist;
 use App\Models\Follower;
 use Illuminate\View\View;
 use App\Models\Artist\Song;
@@ -18,13 +19,18 @@ use Illuminate\Support\Facades\Validator;
 class ArtistController extends Controller
 {
 
-    public function __construct() {
+    public function __construct() 
+    {
         $this->middleware('auth:artist')->except(['profile','oneSong','follow']);
     }
 
     public function index() : View
     {
         $artist = auth()->user();
+        $typeArtists = null;
+        if($artist->typeArtist->libele === 'Alternative' || $artist->typeArtist->id === 1){
+            $typeArtists = TypeArtist::all();
+        }
         $songs = auth()->user()->songs()->orderBy('created_at', 'desc')->paginate(10);
         $videos = [
             Youtube::iFrame('https://www.youtube.com/watch?v=tEnCoocmPQM', [
@@ -35,7 +41,7 @@ class ArtistController extends Controller
             ]),
         ];
         
-        return view('artist.index', compact('songs','artist','videos'));
+        return view('artist.index', compact('songs','artist','videos','typeArtists'));
     }
 
     public function setting ()
@@ -104,8 +110,8 @@ class ArtistController extends Controller
     {
         return response()->json([
             'code' => $code,
-                'message' => $message,
-                'followers' => $followers,
+            'message' => $message,
+            'followers' => $followers,
         ],$code);
     }
 }

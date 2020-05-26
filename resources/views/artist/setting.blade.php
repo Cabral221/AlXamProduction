@@ -13,6 +13,24 @@
         <div class="container">
             <div class="row my-3">
                 <div class="col-md-8 col-md-offset-2">
+                    <div class="card card-dark text-left">
+                        <div class="card-body">
+                            <h4>Modifier votre description</h4>
+                            <form action="#" method="post">
+                                @csrf
+                                <div class="form-group">
+                                    <textarea name="describe" id="describe" rows="2" class="form-control">Petit text poyr toi</textarea>
+                                </div>
+                                <div class="form-group text-right">
+                                    <button type="submit" class="btn btn-dark">Enregistrer</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row my-3">
+                <div class="col-md-8 col-md-offset-2">
                     <div class="card card-warning text-left">
                         <div class="card-body">
                             <h4>Modifier mon email</h4>

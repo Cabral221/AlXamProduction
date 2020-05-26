@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
+  <title>Rekel Administration</title>
 
   <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('admin_asset/assets/img/apple-icon.png') }}">
   <link rel="icon" type="image/png" href="{{ asset('admin_asset/assets/img/favicon.png') }}">
@@ -19,9 +19,16 @@
       @include('layouts.admin.navbar')
       <div class="content">
           <div class="container-fluid">
-            <div class="alert alert-success">
-              <p>Alert test</p>
-            </div>
+            @if (session('success'))
+                <div class="alert alert-success">
+                    {{ session('success') }}
+                </div>
+            @endif
+            @if (session('error'))
+                <div class="alert alert-danger">
+                    {{ session('error') }}
+                </div>
+            @endif
             @yield('container')
           </div>
       </div>
@@ -32,6 +39,5 @@
   @include('layouts.admin.plugin')
     
   @include('layouts.admin.script')
-  @include('flashy::message')
 </body>
 </html>

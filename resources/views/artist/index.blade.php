@@ -34,165 +34,149 @@
             </div>
         </div>
     </div>
-
-    <section class="section needed">
+    @if ($typeArtists !== null)
+        <section class="section">
             <div class="container">
-                <div class="menu-artist">
-                    <ul class="">
-                        <li class="active">
-                            <a href="{{route('artist.index')}}" class="">Sons <span class="small float-right">({{ $artist->songs->count() }})</span></a>
-                        </li>
-                        <li class=""><a href="#" class="">Playlist</a></li>
-                        <li class=""><a href="{{ route('artist.opportinuite') }}" class="">Opportinuités</a></li>
-                        <li class=""><a href="#" class="">Fans</a></li>
-                    </ul>
-                </div>
-            </div>
-    </section>
-    
-    <section class="section">
-        <div class="container text-left">
-            <div class="row mb-3">
-                <div class="col-sm-8">
-                    <h2 class="float-left">Tous vos titres</h2>
-                    <span class="badge badge-pill badge-danger float-right mr-3" style="line-height:2.2rem;" >3 / 5</span>
-                </div>
-                <div class="col-sm-4 text-left">
-                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#addSongModal">
-                        Ajouter un son
-                    </button>
-                    <a href="#" class="btn btn-danger">Créer un album</a>
-                </div>
-            </div>
-            <div class="row text-left">
-                <div class="col-sm-8">
-                    <div class="list-son">
-                        @foreach ($songs as $song)
-                        <div class="list-son-item d-flex">
-                            <div class="son-avatar d-flex align-content-center flex-wrap">
-                                <img src="https://picsum.photos/seed/picsum/50/50" class="avatar float-left" alt="" srcset="">
-                            </div>
-                            <div class="">
-                                <div class="son-title">
-                                    <p>{{ $song->title }}</p>
+                <div class="row my-3">
+                    <div class="col-md-8">
+                        <div class="card card-profil-update">
+                            <div class="card-body">
+                                <h4 class="text-danger">Infos</h4>
+                                <p>Completer votre profil pour bénéficier de toutes les fonctionnalité dont vous avez besoin.</p>
+                                <div class="card card-warning">
+                                    <p>
+                                        <form action="{{ route('artist.typeartists.store') }}" method="post">
+                                            @csrf
+                                            <label for="selectGenre">Vous êtes quel genre d'artiste ? </label>
+                                            <select name="genre" id="selectGenre" required>
+                                                <option value="">Select</option>
+                                                @foreach ($typeArtists as $type)
+                                                    @if ($type->libele !== 'Alternative' || $type->id !== 1)
+                                                        <option value="{{ $type->id }}">{{ $type->libele }}</option>
+                                                    @endif
+                                                @endforeach
+                                            </select>
+                                            <button type="submit" class="btn btn-sm btn-danger">Valider</button>
+                                        </form>
+                                    </p>
                                 </div>
-                                <audio class="js-player" controls>
-                                    <source src="{{ asset('storage/'.$song->audio) }}" type="audio/mpeg">
-                                    Your browser does not support the audio element.
-                                </audio>
                             </div>
-                            <div class="son-time d-flex align-content-center flex-wrap ml-auto mr-2">
-                                <a href="#" onclick="event.preventDefault();document.getElementById('songDelete-{{ $song->id }}').submit();"><i class="fas fa-trash-alt"></i></a>
-                                <form id="songDelete-{{ $song->id }}" action="{{ route('artist.deleteSong', $song) }}" method="POST" class="d-none">
-                                    @csrf
-                                    @method('DELETE')
-                                </form>
-                                <a href="{{ route('likeSong',$song) }}" class="mr-2 ml-2 js-like-link">
-                                    <span class="">
-                                        <span class="js-likes">{{ $song->likes->count() }}</span>
-                                        @if (Auth::guard('web')->check() && $song->isLikeByUserAuth(Auth::guard('web')->user()))
-                                            <i class="fas fa-heart text-danger"></i>
-                                        @elseif(Auth::guard('artist')->check() && $song->isLikeByUserAuth(Auth::guard('artist')->user()))
-                                            <i class="fas fa-heart text-danger"></i>
-                                        @else
-                                            <i class="far fa-heart"></i>
-                                        @endif
-                                    </span>
-                                </a>
-                                <a href="#" onclick="event.preventDefault();" class="showShareModal mr-2 ml-2" 
-                                    data-url="{{ route('artist.song',[$artist,$song]) }}" 
-                                    data-title="{{ $song->title }}"
-                                    data-thumbnail="https://picsum.photos/seed/picsum/100/100"
-                                    data-artist="{{ $artist->name }}"
-                                    data-toggle="modal" 
-                                    data-target="#showShareModal"
-                                >
-                                    <span class="">
-                                        <i class="fas fa-share-square"></i>
-                                    </span>
-                                </a>
-                                <span class="mr-2 ml-2"><a href="#"><i class="fas fa-comments"></i></a></span>
-                            </div>
-                        </div>
-                        @endforeach
-                        <div class="text-center div-pagination">
-                            {{ $songs->links() }}
                         </div>
                     </div>
-                </div>
-                <div class="col-sm-4">
-                    <div class="card" style="width:100%">
-                        <img class="card-img-top" src="https://i.picsum.photos/id/1014/200/100.jpg" alt="Card image">
-                        <div class="card-body">
-                            <h4 class="card-title">Al Xam | John Doe</h4>
-                            <p class="card-text">New Album 2020.</p>
-                            <a href="#" class="btn btn-danger stretched-link">Ecouter</a>
+                    <div class="col-md-4">
+                        <div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
+                            <div class="card-header">Description</div>
+                            <div class="card-body text-left">
+                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            </div>
                         </div>
                     </div>
                     <hr>
-                    <div class="card" style="width:100%">
-                        <img class="card-img-top" src="https://i.picsum.photos/id/1014/200/100.jpg" alt="Card image">
-                        <div class="card-body">
-                            <h4 class="card-title">Al Xam | John Doe</h4>
-                            <p class="card-text">New Album 2020.</p>
-                            <a href="#" class="btn btn-danger stretched-link">Ecouter</a>
+                </div>
+            </div>
+        </section>
+    @else
+        @include('artist.navbar.navbar')
+        
+        <section class="section">
+            <div class="container text-left">
+                <div class="row mb-3">
+                    <div class="col-sm-8">
+                        <h2 class="float-left">Tous vos titres</h2>
+                        <span class="badge badge-pill badge-danger float-right mr-3" style="line-height:2.2rem;" >3 / 5</span>
+                    </div>
+                    <div class="col-sm-4 text-left">
+                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#addSongModal">
+                            Ajouter un son
+                        </button>
+                        <a href="#" class="btn btn-danger">Créer un album</a>
+                    </div>
+                </div>
+                <div class="row text-left">
+                    <div class="col-sm-8">
+                        <div class="list-son">
+                            @foreach ($songs as $song)
+                            <div class="list-son-item d-flex">
+                                <div class="son-avatar d-flex align-content-center flex-wrap">
+                                    <img src="https://picsum.photos/seed/picsum/50/50" class="avatar float-left" alt="" srcset="">
+                                </div>
+                                <div class="">
+                                    <div class="son-title">
+                                        <p>{{ $song->title }}</p>
+                                    </div>
+                                    <audio class="js-player" controls>
+                                        <source src="{{ asset('storage/'.$song->audio) }}" type="audio/mpeg">
+                                        Your browser does not support the audio element.
+                                    </audio>
+                                </div>
+                                <div class="son-time d-flex align-content-center flex-wrap ml-auto mr-2">
+                                    <a href="#" onclick="event.preventDefault();document.getElementById('songDelete-{{ $song->id }}').submit();"><i class="fas fa-trash-alt"></i></a>
+                                    <form id="songDelete-{{ $song->id }}" action="{{ route('artist.deleteSong', $song) }}" method="POST" class="d-none">
+                                        @csrf
+                                        @method('DELETE')
+                                    </form>
+                                    <a href="{{ route('likeSong',$song) }}" class="mr-2 ml-2 js-like-link">
+                                        <span class="">
+                                            <span class="js-likes">{{ $song->likes->count() }}</span>
+                                            @if (Auth::guard('web')->check() && $song->isLikeByUserAuth(Auth::guard('web')->user()))
+                                                <i class="fas fa-heart text-danger"></i>
+                                            @elseif(Auth::guard('artist')->check() && $song->isLikeByUserAuth(Auth::guard('artist')->user()))
+                                                <i class="fas fa-heart text-danger"></i>
+                                            @else
+                                                <i class="far fa-heart"></i>
+                                            @endif
+                                        </span>
+                                    </a>
+                                    <a href="#" onclick="event.preventDefault();" class="showShareModal mr-2 ml-2" 
+                                        data-url="{{ route('artist.song',[$artist,$song]) }}" 
+                                        data-title="{{ $song->title }}"
+                                        data-thumbnail="https://picsum.photos/seed/picsum/100/100"
+                                        data-artist="{{ $artist->name }}"
+                                        data-toggle="modal" 
+                                        data-target="#showShareModal"
+                                    >
+                                        <span class="">
+                                            <i class="fas fa-share-square"></i>
+                                        </span>
+                                    </a>
+                                    <span class="mr-2 ml-2"><a href="#"><i class="fas fa-comments"></i></a></span>
+                                </div>
+                            </div>
+                            @endforeach
+                            <div class="text-center div-pagination">
+                                {{ $songs->links() }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="card text-white bg-dark mb-3">
+                            <div class="card-header">Votre Description</div>
+                            <div class="card-body text-left">
+                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            </div>
+                        </div>
+                        <div class="card" style="width:100%">
+                            <img class="card-img-top" src="https://i.picsum.photos/id/1014/200/100.jpg" alt="Card image">
+                            <div class="card-body">
+                                <h4 class="card-title">Al Xam | John Doe</h4>
+                                <p class="card-text">New Album 2020.</p>
+                                <a href="#" class="btn btn-danger stretched-link">Ecouter</a>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="card" style="width:100%">
+                            <img class="card-img-top" src="https://i.picsum.photos/id/1014/200/100.jpg" alt="Card image">
+                            <div class="card-body">
+                                <h4 class="card-title">Al Xam | John Doe</h4>
+                                <p class="card-text">New Album 2020.</p>
+                                <a href="#" class="btn btn-danger stretched-link">Ecouter</a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-    
-    <section class="section">
-        <div class="container">
-            <div class="row my-3">
-                <div class="col-md-8 col-md-offset-2">
-                    <div class="card card-profil-update">
-                        <div class="card-body">
-                            <h2>Zone Profile</h2>
-                        </div>
-                    </div>
-                </div>
-                <hr>
-            </div>
-            <div class="row">
-                <div class="col-md-8 col-md-offset-2">
-                   <div class="card card-profil-update danger">
-                        <div class="card-body text-danger">
-                            <h2>Zone Danger</h2>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <section class="section needed">
-        <div class="container">
-            <div class="row">
-                <div class="col text-center mb-4">
-                    <h2>Temoignages</h2>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-4">
-                    <svg class="bd-placeholder-img rounded-circle" width="100" height="100" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 140x140"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"></rect><text x="50%" y="50%" fill="#777" dy=".3em">100x100</text></svg>
-                    <h2>John Doe</h2>
-                    <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies .</p>
-                </div>
-                <div class="col-lg-4">
-                    <svg class="bd-placeholder-img rounded-circle" width="100" height="100" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 140x140"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"></rect><text x="50%" y="50%" fill="#777" dy=".3em">100x100</text></svg>
-                    <h2>John Doe</h2>
-                    <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus.</p>
-                </div>
-                <div class="col-lg-4">
-                    <svg class="bd-placeholder-img rounded-circle" width="100" height="100" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 140x140"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"></rect><text x="50%" y="50%" fill="#777" dy=".3em">100x100</text></svg>
-                    <h2>John Doe</h2>
-                    <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
-                </div>
-            </div><!-- /.row -->
-        </div>
-    </section>
+        </section>
+    @endif
 
 @endsection
 

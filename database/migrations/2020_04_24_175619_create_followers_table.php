@@ -18,6 +18,9 @@ class CreateFollowersTable extends Migration
             $table->integer('artist_id');
             $table->string('followable_type');
             $table->string('followable_id');
+
+            $table->foreign('artist_id')->references('id')->on('artists')->onDelete('cascade');
+
             $table->timestamps();
         });
     }

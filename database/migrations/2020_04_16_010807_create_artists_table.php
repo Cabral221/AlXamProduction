@@ -19,13 +19,18 @@ class CreateArtistsTable extends Migration
             $table->string('email')->unique()->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password')->nullable();
+            $table->text('describe')->nullable();
+            $table->string('slug')->unique();
 
             $table->integer('type_artist_id')->nullable();
-            $table->string('slug')->unique();
 
             $table->string('provider')->nullable();
             $table->string('provider_id')->nullable();
-
+            
+            $table->boolean('is_active')->default(true);
+            $table->boolean('is_premium')->default(false);
+            
+            $table->foreign('type_artist_id')->references('id')->on('type_artists')->onDelete('cascade');
             $table->rememberToken();
             $table->timestamps();
         });

@@ -4,7 +4,7 @@
     <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Al Xam Production</title>
+        <title>RËKEL ART</title>
         <!-- Fonts -->
        @include('layouts.css')
        @yield('style')

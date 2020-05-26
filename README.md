@@ -25,20 +25,22 @@ Les ( E ) sont des tâches qui sont en cours de développement.
 
 - Systéme d'authenfication via les Réseaux sociaux
     * Facebook 
-        ^ User -- V
-        ^ Artist -- V
+        - User -- V
+        - Artist -- V
     * Instagram
-        ^ User -- X
-        ^ Artist -- X
+        - User -- X
+        - Artist -- X
 
 - Integration d'un template d'administration
     * Template -- V
     * Integration -- V
 
 - Systéme d'avatar
-    * User -- X
+    * User 
+        - Provider social acount -- V
+        - user simple -- X
     * Artist -- V
-    * Sons -- V
+    * Sons -- X
     * Services -- V
 
 - CRUD des services fournit par Rekel
@@ -95,7 +97,7 @@ Les ( E ) sont des tâches qui sont en cours de développement.
     * Supprimer
 
 - Responsive Design
-    * Cotés utilisateur
+    * Coté utilisateur
 
 - Ajouter un loader d'attente lors de chargement d'un son
     * Ajouter -- V

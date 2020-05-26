@@ -7,6 +7,7 @@ use App\Models\Avatar;
 use App\Models\Follower;
 use App\Models\Artist\Song;
 use Illuminate\Support\Str;
+use Illuminate\Support\Carbon;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -41,6 +42,13 @@ class Artist extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    // Getter
+    public function getCreatedAtAttribute()
+    {
+        // dd($this->attributes["created_at"]);
+        return Carbon::parse($this->attributes["created_at"]);
+    }
 
     protected static function booted() 
     {
@@ -80,9 +88,9 @@ class Artist extends Authenticatable
 
     public function isFollowBy($user)
     {
-        // dd($auth);
+        // dd($user);
         foreach($this->followers as $follower) {
-            if($follower->followable == $user){
+            if($follower->followable->id == $user->id){
                 return true;
             }
         }

@@ -36,9 +36,10 @@ Route::name('artist.')->group(function () {
     Route::middleware('auth:artist')->prefix('/artist')->group(function() {
         // Artist Dashboard
         Route::get('/home', 'Artist\ArtistController@index')->name('index');
-        Route::get('/setting', 'Artist\ArtistController@setting')->name('setting');
         Route::get('/opportinuites', 'Artist\ArtistController@opportinuites')->name('opportinuite');
-
+        Route::get('/setting', 'Artist\ArtistController@setting')->name('setting');
+        // Routes pour les type d'artist
+        Route::post('/typeartists/store', 'Artist\TypeArtistController@storeTypeArtist')->name('typeartists.store');
         // Ajout de son
         Route::post('/song/add', 'Artist\SongController@store')->name('addSong');
         Route::delete('/songs/{song:slug}/delete', 'Artist\SongController@delete')->name('deleteSong');
@@ -71,6 +72,10 @@ Route::name('admin.')->prefix('/admin')->group(function () {
         Route::get('/services/{service:slug}/edit', 'Admin\ServicesController@edit')->name('services.edit');
         Route::put('/services/{service:slug}', 'Admin\ServicesController@update')->name('services.update');
         Route::delete('/services/{service:slug}/delete', 'Admin\ServicesController@delete')->name('services.delete');
+        // Routes for artists CRUD
+        Route::get('/artists', 'Admin\ArtistController@index')->name('artists.index');
+        Route::post('/typeartists', 'Admin\ArtistController@storeTypeArtist')->name('typeartists.create');
+        Route::delete('/typesartists/delete/{id}', 'Admin\ArtistController@deleteTypeArtist')->name('typeartists.delete');
     });
 });
 

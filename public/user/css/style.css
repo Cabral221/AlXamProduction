@@ -92,14 +92,24 @@ a:hover{
 }
 /* BTN OVERRIDE */
 /* Card Profil Update */
+.card-dark {
+    padding: 0 20px;
+    background-color: transparent;
+    border: 2px solid #000;
+    border-radius: 10px;
+}
 .card-red{
+  padding: 0 20px;
   border: 2px solid #942244;
   border-radius: 10px;
 }
 .card-red h2 {
+  background-color: transparent;
   color: #942244;
 }
 .card-warning {
+  padding: 0 20px;
+  background-color: transparent;
   border: 2px solid #f28e24;
   border-radius: 10px;
 }
@@ -288,21 +298,27 @@ a:hover{
 }
 .menu-artist ul li{
   list-style: none;
-  min-width: 250px;
-  min-width: 150px;
+  min-width: 120px;
+  max-width: 120px;
   text-align: left;
   margin: 1rem;
-  padding: 1rem;
+  /* padding: 1rem; */
   background-color: #f28e24;
+  border: 1px solid transparent;
 }
 .menu-artist ul li.active,
 .menu-artist ul li:hover{
   background-color: #f28e24;
   border: 1px solid white;
 }
-.menu-artist ul li a{
+.menu-artist ul li a {
+  /* margin: 1rem; */
+  padding: 1rem 1rem;
   text-decoration: none;
   color: white;
+  width: 100%;
+  display: block;
+  width: 100%;
 }
 .list-son{
   width: 100%;

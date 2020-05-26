@@ -1,21 +1,21 @@
 <div class="sidebar" data-color="orange" data-background-color="black" data-image="{{ asset('admin_asset/assets/img/sidebar-1.jpg') }}">
     <div class="logo">
-        <a href="http://www.creative-tim.com" class="simple-text logo-normal">
-        RËKEL ART
+        <a href="{{ route('admin.index') }}" class="simple-text logo-normal">
+        RËKEL ART <img src="{{ asset('images/logo.png') }} " alt="Logo Rekel" srcset="" width="50px">
         </a>
     </div>
     <div class="sidebar-wrapper">
         <ul class="nav">
-        <li class="nav-item active ">
+        <li class="nav-item">
             <a class="nav-link" href="{{ route('admin.services.index') }}">
             <i class="material-icons">dashboard</i>
             <p>Services</p>
             </a>
         </li>
-        <li class="nav-item ">
-            <a class="nav-link" href="./user.html">
-            <i class="material-icons">person</i>
-            <p>User Profile</p>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('admin.artists.index') }}">
+            <i class="material-icons">dashboard</i>
+            <p>Artistes</p>
             </a>
         </li>
         <li class="nav-item ">
@@ -36,7 +36,7 @@
             <p>Icons</p>
             </a>
         </li>
-        <li class="nav-item ">
+        <li class="nav-item active ">
             <a class="nav-link" href="./map.html">
             <i class="material-icons">location_ons</i>
             <p>Maps</p>

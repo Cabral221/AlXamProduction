@@ -7,6 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class TypeArtist extends Model
 {
+    
+    public $fillable = ['libele'];
+
     public function artists() 
     {
         return $this->hasMany(Artist::class);
