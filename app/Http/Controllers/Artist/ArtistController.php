@@ -31,7 +31,7 @@ class ArtistController extends Controller
         if($artist->typeArtist->libele === 'Alternative' || $artist->typeArtist->id === 1){
             $typeArtists = TypeArtist::all();
         }
-        $songs = auth()->user()->songs()->orderBy('created_at', 'desc')->paginate(10);
+        $songs = $artist->songs()->orderBy('created_at', 'desc')->paginate(10);
         $videos = [
             Youtube::iFrame('https://www.youtube.com/watch?v=tEnCoocmPQM', [
                 'rel'=> 0, 'controls'=>1, 'showinfo'=>1, 'frameborder'=>0
@@ -56,7 +56,6 @@ class ArtistController extends Controller
 
     public function profile(Artist $artist)
     {
-        // dd($artist->songs);
         $videos = [
             Youtube::iFrame('https://www.youtube.com/watch?v=tEnCoocmPQM', [
                 'rel'=> 0, 'controls'=>1, 'showinfo'=>1, 'frameborder'=>0
@@ -65,8 +64,7 @@ class ArtistController extends Controller
                 'rel'=> 0, 'controls'=>1, 'showinfo'=>1, 'frameborder'=>0
             ]),
         ];
-        // dd($video);
-        $songs = $artist->songs()->paginate(5);
+        $songs = $artist->songs()->orderBy('created_at','desc')->paginate(5);
         return view('artist.profile', compact('artist','songs','videos'));
     }
 

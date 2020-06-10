@@ -9,6 +9,7 @@ use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
@@ -21,6 +22,7 @@ class SongController extends Controller
         $validator = Validator::make($request->all(), [
             'audioName' => ['required', 'string', 'max:255'],
             'audioFile' => ['required','mimes:mpga,wav'],
+            'thumbnail' => ['mimes:jpg,png,jpeg'],
         ]);
 
         if ($validator->fails()) {
@@ -39,12 +41,31 @@ class SongController extends Controller
             'public'
         );
 
+        // Avatar Du Song
+        // $user = Auth::guard('artist')->user();
+        $thumbnail = $request->file('thumbnail');
+        $urlThumb = null;
+        // return dd($thumbnail);
+        if($thumbnail !== null){
+            // Get extension file and file name
+            $ext = $thumbnail->getClientOriginalExtension();
+            $filename = Str::slug(str_replace('.'.$ext, '', $thumbnail->getClientOriginalName())). '-' .Carbon::now()->timestamp ;
+            $urlThumb = 'songs/thumbnails/'. Carbon::now()->year .'/'. Carbon::now()->month.'/'. $filename . '.' . $ext;
+            
+            // Resize avatar with image intervention
+            $newThumbnail = Image::make($thumbnail->getRealPath())->fit(200, 200)->encode('jpg',80);
+            Storage::disk('public')->put($urlThumb,$newThumbnail);
+            // 
+            // dd($thumbnail);
+        }
+        
+
         $track = new Song([
             'audio' => $url,
             'title' => $request['audioName'],
-            'thumbnail' => 'thumbnail.jpg'
+            'thumbnail' => $urlThumb ? $urlThumb : 'images/thumbnail.jpg'
         ]);
-        Auth::user()->songs()->save($track);
+        Auth::guard('artist')->user()->songs()->save($track);
 
         return redirect()->back();
         

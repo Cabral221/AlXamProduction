@@ -9,8 +9,10 @@
         </button>
         </div>
         <div class="modal-body">
-            <div class="progress d-none">
-                <div id="progress__song" class="progress-bar progress-bar-striped bg-warning" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">0%</div>
+            <div class="posR">
+                <div class="progress d-none">
+                    <div id="progress__song" class="progress-bar progress-bar-striped bg-warning" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">0%</div>
+                </div>
             </div>
             <form id="form-add-song" action="{{ route('artist.addSong') }}" method="post" enctype="multipart/form-data">
                 @csrf
@@ -21,6 +23,10 @@
                 <div class="form-group">
                     <label for="audioFile">fichiers audios autorisés (mp3,wav) </label>
                     <input name="audioFile" type="file" class="form-control-file" id="audioFile">
+                </div>
+                <div class="form-group">
+                    <label for="thumbnail">Ajouter une pochette <small class="muted">Ceci n'est pas obigatoire</small></label>
+                    <input type="file" name="thumbnail" id="thumbnail" class="form-control">
                 </div>
                 <div class="form-group">
                     <button type="submit" class="btn btn-danger">Enregistrer</button>

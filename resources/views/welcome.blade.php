@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('header')
+    {{-- 
     <div id="myCarousel" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
             <li data-target="#myCarousel" data-slide-to="0" class=""></li>
@@ -47,111 +48,60 @@
             <span class="sr-only">Next</span>
         </a>
     </div>
+     --}}
+     <div class="posR">
+        <div id="section-img-header"></div>
+        <div class="section-img-header__overlay">
+            <h1 class="">Bienvenue Dans l'industrie musicale</h1>
+            <h3>Premier pas à Saint-Louis</h3>
+        </div>
+     </div>
+
 @endsection
 
 @section('container')                
     <section class="section needed services">
         <div class="container">
-            <div class="row">
+            <div class="row services">
                 @foreach ($services as $service)
-                    <div class="col-lg-4">
-                        <img src="{{ asset('storage/'.$service->icon) }}" class="bd-placeholder-img rounded-circle" width="110px" height="110px" alt="" srcset="">
+                    <div class="col-lg-4 service-item">
+                        <div class="rounded-circle bg-white d-inline-block p-3">
+                            <img src="{{ asset('storage/'.$service->icon) }}" class="bd-placeholder-img" width="110px" height="110px" alt="" srcset="">
+                        </div>
                         <h2>{{ ucfirst($service->title) }}</h2>
-                        <p>{{ $service->describe }}</p>
-                        <h4>{{ $service->price }} Fcfa</h4>
+                        <p>{!! $service->describe !!}</p>
+                        {{-- <h4>{{ $service->price }} Fcfa</h4> --}}
                         <p><a class="btn btn-outline-danger" href="#" role="button">View details »</a></p>
                     </div><!-- /.col-lg-4 -->
                 @endforeach
             </div><!-- /.row -->
         </div>
     </section>
+
     <section class="section marketing">
         <div class="container">
             <div class="row text-center">
                 <div class="col">
-                    <h2 class="text-center">Top Artistes du mois <small class="text-danger">( Avril )</small></h2>
+                    <h2 class="text-center">Top Artistes du mois <small class="text-danger">( {{ Carbon\Carbon::now()->locale('fr-FR')->monthName }} )</small></h2>
                 </div>
             </div>
             <div class="row">
                 <div class="col-12">
-                    <div class="list-son">
-                        <div class="list-son-item">
-                            <div class="son-avatar float-left">
-                                <img src="https://picsum.photos/seed/picsum/50/50" class="avatar float-left" alt="" srcset="">
+                    <div class="list-artist">
+                        <?php $z = 1?>
+                        @foreach ($artists as $artist)
+                            <div class="list-artist-item">
+                                <div class="artist-rang">
+                                    <span>{{ $z++ }}</span>
+                                </div>
+                                {{-- <div class="artist-avatar"> --}}
+                                <img src="{{ ($artist->avatar !== null) ? ($artist->provider !== null ? $artist->avatar->avatar : asset('storage/'.$artist->avatar->avatar)) : asset('storage/uploads/avatar.png') }}" class="artist-avatar" alt="" srcset="">
+                                {{-- </div> --}}
+                                <p class="artist-name">
+                                    <a href="{{ route('artist.profile', $artist) }}">{{ $artist->name }}</a>
+                                </p>
                             </div>
-                            <div class="son-title float-left">
-                                <p>Taylor Gang</p>
-                            </div>
-                            <audio controls>
-                                <source src="http://localhost:8000/user/sons/music.mp3" type="audio/mpeg">
-                                Your browser does not support the audio element.
-                            </audio>
-                            <div class="son-time pull-right text-right mr-4">
-                                <span class="mr-2 ml-2"><a href="#"><i class="fas fa-heart"></a></i></span>
-                                <span class="mr-2 ml-2"><a href="#"><i class="fas fa-share-square"></i></a></span>
-                                <span class="mr-2 ml-2"><a href="#"><i class="fas fa-comments"></i></a></span>
-                            </div>
-                        </div>
-                        <div class="list-son-item">
-                            <div class="son-avatar float-left">
-                                <img src="https://picsum.photos/seed/picsum/50/50" class="avatar float-left" alt="" srcset="">
-                            </div>
-                            <div class="son-icon-play float-left"><a href="#"><i class="fas fa-play"></i></a></div>
-                            <div class="son-title float-left">
-                                <p>Taylor Gang</p>
-                            </div>
-                            <div class="son-time pull-right text-right mr-4">
-                                <span class="mr-2 ml-2"><a href="#"><i class="fas fa-heart"></a></i></span>
-                                <span class="mr-2 ml-2"><a href="#"><i class="fas fa-share-square"></i></a></span>
-                                <span class="mr-2 ml-2"><a href="#"><i class="fas fa-comments"></i></a></span>
-                                <span>4:22</span>
-                            </div>
-                        </div>
-                        <div class="list-son-item">
-                            <div class="son-avatar float-left">
-                                <img src="https://picsum.photos/seed/picsum/50/50" class="avatar float-left" alt="" srcset="">
-                            </div>
-                            <div class="son-icon-play float-left"><a href="#"><i class="fas fa-play"></i></a></div>
-                            <div class="son-title float-left">
-                                <p>Taylor Gang</p>
-                            </div>
-                            <div class="son-time pull-right text-right mr-4">
-                                <span class="mr-2 ml-2"><a href="#"><i class="fas fa-heart"></a></i></span>
-                                <span class="mr-2 ml-2"><a href="#"><i class="fas fa-share-square"></i></a></span>
-                                <span class="mr-2 ml-2"><a href="#"><i class="fas fa-comments"></i></a></span>
-                                <span>4:22</span>
-                            </div>
-                        </div>
-                        <div class="list-son-item">
-                            <div class="son-avatar float-left">
-                                <img src="https://picsum.photos/seed/picsum/50/50" class="avatar float-left" alt="" srcset="">
-                            </div>
-                            <div class="son-icon-play float-left"><a href="#"><i class="fas fa-play"></i></a></div>
-                            <div class="son-title float-left">
-                                <p>Taylor Gang</p>
-                            </div>
-                            <div class="son-time pull-right text-right mr-4">
-                                <span class="mr-2 ml-2"><a href="#"><i class="fas fa-heart"></a></i></span>
-                                <span class="mr-2 ml-2"><a href="#"><i class="fas fa-share-square"></i></a></span>
-                                <span class="mr-2 ml-2"><a href="#"><i class="fas fa-comments"></i></a></span>
-                                <span>4:22</span>
-                            </div>
-                        </div>
-                        <div class="list-son-item">
-                            <div class="son-avatar float-left">
-                                <img src="https://picsum.photos/seed/picsum/50/50" class="avatar float-left" alt="" srcset="">
-                            </div>
-                            <div class="son-icon-play float-left"><a href="#"><i class="fas fa-play"></i></a></div>
-                            <div class="son-title float-left">
-                                <p>Taylor Gang</p>
-                            </div>
-                            <div class="son-time pull-right text-right mr-4">
-                                <span class="mr-2 ml-2"><a href="#"><i class="fas fa-heart"></a></i></span>
-                                <span class="mr-2 ml-2"><a href="#"><i class="fas fa-share-square"></i></a></span>
-                                <span class="mr-2 ml-2"><a href="#"><i class="fas fa-comments"></i></a></span>
-                                <span>4:22</span>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div><!-- /.row -->

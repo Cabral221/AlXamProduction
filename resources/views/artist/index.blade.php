@@ -83,7 +83,7 @@
                 <div class="row mb-3">
                     <div class="col-sm-8">
                         <h2 class="float-left">Tous vos titres</h2>
-                        <span class="badge badge-pill badge-danger float-right mr-3" style="line-height:2.2rem;" >3 / 5</span>
+                        <span class="badge badge-pill badge-danger float-right mr-3" style="line-height:2.2rem;" >{{ $artist->songs->count() }} / 5</span>
                     </div>
                     <div class="col-sm-4 text-left">
                         <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#addSongModal">
@@ -98,7 +98,7 @@
                             @foreach ($songs as $song)
                             <div class="list-son-item d-flex">
                                 <div class="son-avatar d-flex align-content-center flex-wrap">
-                                    <img src="https://picsum.photos/seed/picsum/50/50" class="avatar float-left" alt="" srcset="">
+                                    <img src="{{  $song->thumbnail ? asset('storage/'.$song->thumbnail) : $artist->avatar->avatar }}" class="avatar float-left" alt="Thumbnail Song" width="50px">
                                 </div>
                                 <div class="">
                                     <div class="son-title">
@@ -115,9 +115,9 @@
                                         @csrf
                                         @method('DELETE')
                                     </form>
+                                    <span class="ml-2 mr-2"> - </span>
                                     <a href="{{ route('likeSong',$song) }}" class="mr-2 ml-2 js-like-link">
                                         <span class="">
-                                            <span class="js-likes">{{ $song->likes->count() }}</span>
                                             @if (Auth::guard('web')->check() && $song->isLikeByUserAuth(Auth::guard('web')->user()))
                                                 <i class="fas fa-heart text-danger"></i>
                                             @elseif(Auth::guard('artist')->check() && $song->isLikeByUserAuth(Auth::guard('artist')->user()))
@@ -125,6 +125,7 @@
                                             @else
                                                 <i class="far fa-heart"></i>
                                             @endif
+                                            <span class="js-likes">{{ $song->likes->count() }}</span>
                                         </span>
                                     </a>
                                     <a href="#" onclick="event.preventDefault();" class="showShareModal mr-2 ml-2" 
@@ -146,6 +147,17 @@
                             <div class="text-center div-pagination">
                                 {{ $songs->links() }}
                             </div>
+                        </div>
+                        <hr>
+                        <h2>Vidéos récentes</h2>
+                        <div class="row list-video">
+                            @foreach ($videos as $video)
+                                <div class="col-sm-6 p-2">
+                                    <div class="embed-responsive embed-responsive-16by9">
+                                        {!! $video !!}
+                                    </div>
+                                </div>
+                            @endforeach
                         </div>
                     </div>
                     <div class="col-sm-4">

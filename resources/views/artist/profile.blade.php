@@ -11,7 +11,7 @@
                 <div class="col-sm-8 profile">
                     <div class="row">
                         <div class="pull-left header mr-3 ml-3">
-                            <img src="https://picsum.photos/seed/picsum/100/100" class="avatar pull-left" alt="" srcset="">
+                            <img src="{{ ($artist->avatar !== null) ? ($artist->provider !== null ? $artist->avatar->avatar : asset('storage/'.$artist->avatar->avatar)) : asset('storage/uploads/avatar.png') }}" class="avatar pull-left" alt="" srcset="">
                         </div>
                         <div class="profile-content">
                             <h2>{{ $artist->name }}</h2>

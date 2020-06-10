@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Artist;
 use App\Models\Service;
 use Illuminate\Http\Request;
 
@@ -25,7 +26,8 @@ class HomeController extends Controller
     public function index()
     {
         $services = Service::all();
-        return view('welcome',compact('services'));
+        $artists= Artist::limit(10)->get();
+        return view('welcome',compact('services','artists'));
     }
 
     public function collection() 

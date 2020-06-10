@@ -57,7 +57,7 @@ class ServicesController extends Controller
         Storage::disk('public')->put($url,$newIcon);
         $form->getModel()->save();
 
-        return redirect()->route('admin.services.index');
+        return redirect()->route('admin.services.index')->with('success', 'Service crée avec succés');
     }
 
     public function edit(Service $service)
@@ -67,29 +67,32 @@ class ServicesController extends Controller
     }
 
     public function update(Service $service, Request $request)
-    {        
+    {
         $form = $this->getForm($service);
         $form->redirectIfNotValid();
         $icon = $request->file('icon');
-        
-        // Get extension file and file name
-        $ext = $icon->getClientOriginalExtension();
-        $filename = Str::slug(str_replace('.'.$ext, '', $icon->getClientOriginalName())). '-' .Carbon::now()->timestamp ;
-        $url = 'uploads/services/'. Carbon::now()->year .'/'. Carbon::now()->month.'/'. $filename . '.' . $ext;
 
-        if($service->icon !== null) {
-            Storage::disk('public')->delete($service->icon);
+        if($icon !== null){
+            // Get extension file and file name
+            $ext = $icon->getClientOriginalExtension();
+            $filename = Str::slug(str_replace('.'.$ext, '', $icon->getClientOriginalName())). '-' .Carbon::now()->timestamp ;
+            $url = 'uploads/services/'. Carbon::now()->year .'/'. Carbon::now()->month.'/'. $filename . '.' . $ext;
+    
+            if($service->icon !== null) {
+                Storage::disk('public')->delete($service->icon);
+            }
+    
+            // Resize icon with image intervention
+            $newIcon = Image::make($icon->getRealPath())->fit(110, 110)->encode('jpg',80);
+            
+            // Save new icon file and new service
+            Storage::disk('public')->put($url,$newIcon);
+            $form->getModel()->icon = $url;
+            $form->getModel()->save();
         }
-
-        // Resize icon with image intervention
-        $newIcon = Image::make($icon->getRealPath())->fit(110, 110)->encode('jpg',80);
         
-        // Save new icon file and new service
-        Storage::disk('public')->put($url,$newIcon);
-        $form->getModel()->icon = $url;
-        $form->getModel()->save();
 
-        return redirect()->route('admin.services.index');
+        return redirect()->route('admin.services.index')->with('success','Service Modifié avec succés');
     }
 
     public function delete(Service $service)
